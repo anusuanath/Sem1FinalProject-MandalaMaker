@@ -89,7 +89,7 @@ public class mainFrame extends JFrame implements MouseListener,MouseWheelListene
 
     public static void main(String[] args) {
 	mainFrame frame = new mainFrame();
-	frame.setTitle("mouse listener: draggable");
+	frame.setTitle("mouse listener: draggable, now with multiple squares!");
 	frame.setResizable(false);
 	frame.setSize(600, 600);
 	frame.setMinimumSize(new Dimension(600, 600));
