@@ -1,6 +1,7 @@
 # The Mandala Maker
 
 [APCS Pd. 10](http://www.stuycs.org/courses/apcs/k/notes)
+
 [The Holy Math Formula™](http://www.tiac.net/~sw/2005/03/Mandala/index.html)
 
 Critical Features
