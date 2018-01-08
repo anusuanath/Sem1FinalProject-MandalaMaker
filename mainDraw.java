@@ -10,7 +10,6 @@ public class mainDraw extends JComponent {
 
     public int x = 100;
     public int y = 100;
-    public newXY xy = new newXY(1,1,180);
     
     public void paint(Graphics g) {
 	super.paint(g);
