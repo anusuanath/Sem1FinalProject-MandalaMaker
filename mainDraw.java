@@ -6,7 +6,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.lang.Math;
 
-public class mainDraw extends JComponent {
+public class mainDraw extends JComponent{
 
     public int x = 100;
     public int y = 100;
