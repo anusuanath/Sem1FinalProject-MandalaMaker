@@ -7,6 +7,8 @@ import java.awt.event.*;
 
 public class mainFrame extends JFrame implements MouseListener,MouseWheelListener,MouseMotionListener{
     private mainDraw draw;
+    private JTextField t;
+    
     
     public void mouseEntered(MouseEvent e) {
 	System.out.println("mouseEntered");
@@ -89,12 +91,13 @@ public class mainFrame extends JFrame implements MouseListener,MouseWheelListene
 
     public static void main(String[] args) {
 	mainFrame frame = new mainFrame();
+
 	frame.setTitle("mouse listener: draggable, now with multiple squares!");
 	frame.setResizable(false);
 	frame.setSize(600, 600);
 	frame.setMinimumSize(new Dimension(600, 600));
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+	
 	//dont understand these 2 lines
 	frame.getContentPane().add(frame.draw);
 	frame.pack();
