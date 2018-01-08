@@ -22,7 +22,7 @@ public class mainDraw extends JComponent {
 	g.fillRect(x-20, y-20, 10, 10);
 	g.fillRect(x, y+20, 10, 10);
 	g.fillRect(x, y-20, 10, 10);
-        g.setColor(Color.BLACK);
+        g.setColor(Color.RED);
     }
 
     /*
