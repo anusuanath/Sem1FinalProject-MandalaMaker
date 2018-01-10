@@ -4,6 +4,8 @@
 
 [The Holy Math Formula™](http://www.tiac.net/~sw/2005/03/Mandala/index.html)
 
+[Paint Thing I Found](http://math.hws.edu/eck/cs124/javanotes6/source/SimplePaint.java)
+
 Critical Features
 1. A box for drawing within
 2. Adjuster for number of axes
