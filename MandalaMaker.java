@@ -10,7 +10,7 @@ public class MandalaMaker extends JApplet {
 	JFrame window = new JFrame("Mandala Maker");
 	panel content = new panel();
 	window.setContentPane(content);
-	window.setSize(656,600);
+	window.setSize(556,500);
 	window.setLocation(100,100);
 	window.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 	window.setVisible(true);
