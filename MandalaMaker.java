@@ -75,7 +75,10 @@ public class MandalaMaker extends JApplet {
          
 	    g.setColor(Color.WHITE);
 	    g.drawRect(width-55, 1 + currentColor*colorSpacing, 53, colorSpacing);
-	    g.drawRect(width-54, 2 + currentColor*colorSpacing, 51, colorSpacing-2);    
+	    g.drawRect(width-54, 2 + currentColor*colorSpacing, 51, colorSpacing-2);
+
+	    g.setColor(Color.BLACK);
+	    g.drawLine((width - 56)/2, 0, (width - 56)/2, 600);
 	}
 
 	private void changeColor(int y) {   
