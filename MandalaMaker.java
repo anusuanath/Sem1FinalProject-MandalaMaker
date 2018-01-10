@@ -137,8 +137,8 @@ public class MandalaMaker extends JApplet {
 		return;
 	    }	 
 
-	    if (x > width - 63) {
-		if (y > height - 63) {
+	    if (x > width - 57) {
+		if (y > height - 57) {
 		    repaint();
 		}
 		else {
@@ -146,7 +146,7 @@ public class MandalaMaker extends JApplet {
 		}
 	    }
 
-	    else if (x > 13 && x < width - 66 && y > 13 && y < height - 13) {
+	    else if (x > 7 && x < width - 60 && y > 7 && y < height - 7) {
 		pX = x;
 		pY = y;
 		dragging = true;
@@ -171,27 +171,27 @@ public class MandalaMaker extends JApplet {
 	   int x = e.getX();
 	   int y = e.getY();
          
-	   if (x < 13) {
-	       x = 13;
+	   if (x < 7) {
+	       x = 7;
 	   }
 	
-	   if (x > getWidth() - 67) {
-	       x = getWidth() - 67;
+	   if (x > getWidth() - 61) {
+	       x = getWidth() - 61;
 	   }
 	
-	   if (y < 13) {
-	       y = 13;
+	   if (y < 7) {
+	       y = 7;
 	   }
 
-	   if (y > getHeight() - 14) {
-	       y = getHeight() - 14;
+	   if (y > getHeight() - 8) {
+	       y = getHeight() - 8;
 	   }
 
 	   graphicsForDrawing.drawLine(pX, pY, x, y);
-	   graphicsForDrawing.drawLine(pX + 5, pY + 5, x + 5, y + 5);
-	   graphicsForDrawing.drawLine(pX + 10, pY + 10, x + 10, y + 10);
-	   graphicsForDrawing.drawLine(pX - 5, pY - 5, x - 5, y - 5);
-	   graphicsForDrawing.drawLine(pX - 10, pY - 10, x - 10, y - 10);
+	   graphicsForDrawing.drawLine(pX + 2, pY + 2, x + 2, y + 2);
+	   graphicsForDrawing.drawLine(pX + 4, pY + 4, x + 4, y + 4);
+	   graphicsForDrawing.drawLine(pX - 2, pY - 2, x - 2, y - 2);
+	   graphicsForDrawing.drawLine(pX - 4, pY - 4, x - 4, y - 4);
 
 	   pX = x;
 	   pY = y;
