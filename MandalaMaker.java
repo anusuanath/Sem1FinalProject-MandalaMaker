@@ -29,7 +29,7 @@ public class MandalaMaker extends JApplet {
 	    MAGENTA = 5,
 	    YELLOW = 6;
 	private int currentColor = BLACK;      
-	private int pX, prevY;      
+	private int pX, pY;      
 	private boolean dragging;
 	private Graphics graphicsForDrawing;
 	
@@ -148,7 +148,7 @@ public class MandalaMaker extends JApplet {
 
 	    else if (x > 13 && x < width - 66 && y > 13 && y < height - 13) {
 		pX = x;
-		prevY = y;
+		pY = y;
 		dragging = true;
 		setUpDrawingGraphics();
 	    }     
@@ -187,14 +187,14 @@ public class MandalaMaker extends JApplet {
 	       y = getHeight() - 14;
 	   }
 
-	   graphicsForDrawing.drawLine(pX, prevY, x, y);
-	   graphicsForDrawing.drawLine(pX + 5, prevY + 5, x + 5, y + 5);
-	   graphicsForDrawing.drawLine(pX + 10, prevY + 10, x + 10, y + 10);
-	   graphicsForDrawing.drawLine(pX - 5, prevY - 5, x - 5, y - 5);
-	   graphicsForDrawing.drawLine(pX - 10, prevY - 10, x - 10, y - 10);
+	   graphicsForDrawing.drawLine(pX, pY, x, y);
+	   graphicsForDrawing.drawLine(pX + 5, pY + 5, x + 5, y + 5);
+	   graphicsForDrawing.drawLine(pX + 10, pY + 10, x + 10, y + 10);
+	   graphicsForDrawing.drawLine(pX - 5, pY - 5, x - 5, y - 5);
+	   graphicsForDrawing.drawLine(pX - 10, pY - 10, x - 10, y - 10);
          
 	   pX = x;
-	   prevY = y;
+	   pY = y;
 	}
        
 	public void mouseEntered(MouseEvent evt) { }
