@@ -11,7 +11,7 @@ public class MandalaMaker extends JApplet {
 	panel content = new panel();
 	window.setContentPane(content);
 	window.setSize(556,500);
-	window.setLocation(100,100);
+	window.setLocation(0,0);
 	window.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 	window.setVisible(true);
     }
@@ -75,7 +75,10 @@ public class MandalaMaker extends JApplet {
          
 	    g.setColor(Color.WHITE);
 	    g.drawRect(width-55, 1 + currentColor*colorSpacing, 53, colorSpacing);
-	    g.drawRect(width-54, 2 + currentColor*colorSpacing, 51, colorSpacing-2);    
+	    g.drawRect(width-54, 2 + currentColor*colorSpacing, 51, colorSpacing-2);
+
+	    g.setColor(Color.BLACK);
+	    g.drawLine((width - 56)/2, 0, (width - 56)/2, height);
 	}
 
 	private void changeColor(int y) {   
@@ -163,17 +166,20 @@ public class MandalaMaker extends JApplet {
 	   graphicsForDrawing = null;
        }
       
-	public void mouseDragged(MouseEvent e) {     
-	   if (dragging == false) {
-	       return;
-	   }
+	public void mouseDragged(MouseEvent e) {
+	    int width = getWidth() - 56;
+	    int height = getHeight();
 
-	   int x = e.getX();
-	   int y = e.getY();
+	    if (dragging == false) {
+		return;
+	    }
+
+	    int x = e.getX();
+	    int y = e.getY();
          
-	   if (x < 7) {
-	       x = 7;
-	   }
+	    if (x < 7) {
+		x = 7;
+	    }
 	
 	   if (x > getWidth() - 61) {
 	       x = getWidth() - 61;
@@ -187,12 +193,24 @@ public class MandalaMaker extends JApplet {
 	       y = getHeight() - 8;
 	   }
 
+	   /*
 	   graphicsForDrawing.drawLine(pX, pY, x, y);
 	   graphicsForDrawing.drawLine(pX + 2, pY + 2, x + 2, y + 2);
 	   graphicsForDrawing.drawLine(pX + 4, pY + 4, x + 4, y + 4);
 	   graphicsForDrawing.drawLine(pX - 2, pY - 2, x - 2, y - 2);
 	   graphicsForDrawing.drawLine(pX - 4, pY - 4, x - 4, y - 4);
+	   */
 
+	   if (x < width/2) {
+	       graphicsForDrawing.drawLine(pX, pY, x, y);
+	       graphicsForDrawing.drawLine(width - pX, pY, width - pX, y);
+	   }
+
+	   if (x >= width/2) {
+	       graphicsForDrawing.drawLine(pX, pY, x, y);
+	       graphicsForDrawing.drawLine(width - pX, pY, width - pX, y);
+	   }
+	   
 	   pX = x;
 	   pY = y;
 	}
