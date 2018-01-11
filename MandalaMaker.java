@@ -78,7 +78,12 @@ public class MandalaMaker extends JApplet {
 	    g.drawRect(width-54, 2 + currentColor*colorSpacing, 51, colorSpacing-2);
 
 	    g.setColor(Color.BLACK);
+
+	    //THIS IS Y-AXIS
 	    g.drawLine((width - 56)/2, 0, (width - 56)/2, height);
+
+	    //THIS IS X-AXIS
+	    g.drawLine(0, height/2, width-56, height/2);
 	}
 
 	private void changeColor(int y) {   
