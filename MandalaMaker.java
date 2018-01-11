@@ -203,12 +203,12 @@ public class MandalaMaker extends JApplet {
 
 	   if (x < width/2) {
 	       graphicsForDrawing.drawLine(pX, pY, x, y);
-	       graphicsForDrawing.drawLine(pX + (width + pX), pY, x + (width + pX), y);
+	       graphicsForDrawing.drawLine(width - pX, pY, width - pX, y);
 	   }
 
 	   if (x >= width/2) {
 	       graphicsForDrawing.drawLine(pX, pY, x, y);
-	       graphicsForDrawing.drawLine(pX - (width + pX)/2, pY, x - (width + pX)/2, y);
+	       graphicsForDrawing.drawLine(width - pX, pY, width - pX, y);
 	   }
 	   
 	   pX = x;
