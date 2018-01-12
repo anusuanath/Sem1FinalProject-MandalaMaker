@@ -207,12 +207,6 @@ public class MandalaMaker extends JApplet {
 	   graphicsForDrawing.drawLine(pX - 4, pY - 4, x - 4, y - 4);
 	   */
 
-<<<<<<< HEAD
-	   graphicsForDrawing.drawLine(pX, pY, x, y);
-	   graphicsForDrawing.drawLine(pX, height - pY, x, height - y);
-	   graphicsForDrawing.drawLine(width - pX, pY, width - x, y);
-	   graphicsForDrawing.drawLine(width - pX, height - pY, width - x, height - y);
-=======
 	   /*
 	   
 	   if (x < width/2) {
@@ -224,10 +218,10 @@ public class MandalaMaker extends JApplet {
 	       graphicsForDrawing.drawLine(pX, pY, x, y);
 	       graphicsForDrawing.drawLine(width - pX, pY, width - x, y);
 	   }
->>>>>>> racheltriestodostuff
 	   
 	   */
 
+	   // 2 AXES
 	   graphicsForDrawing.drawLine(pX, pY, x, y);
 	   graphicsForDrawing.drawLine(pX, height - pY, x, height - y);
 	   graphicsForDrawing.drawLine(width - pX, pY, width - x, y);
