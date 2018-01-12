@@ -209,12 +209,11 @@ public class MandalaMaker extends JApplet {
 
 	   //reflects across y-axis
 	   graphicsForDrawing.drawLine(pX, pY, x, y);
-	   graphicsForDrawing.drawLine(pX, height - pY, x, height - y);
-
-	   //reflects across x-axis
+	   graphicsForDrawing.drawLine(pX * cos(180) - pY * sin(180), pX * sin(180) + pY * cos(180), x * cos(180) - y * sin(180), x * sin(180) + y * cos(180));
+	   /*reflects across x-axis
 	   graphicsForDrawing.drawLine(width - pX, pY, width - x, y);
 	   graphicsForDrawing.drawLine(width - pX, height - pY, width - x, height - y);
-	   
+	   */
 	   pX = x;
 	   pY = y;
 	}
