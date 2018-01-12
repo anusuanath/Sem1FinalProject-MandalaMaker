@@ -84,6 +84,7 @@ public class MandalaMaker extends JApplet {
 
 	    //THIS IS X-AXIS
 	    g.drawLine(0, height/2, width-56, height/2);
+
 	}
 
 	private void changeColor(int y) {   
