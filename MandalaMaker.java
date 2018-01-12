@@ -177,20 +177,20 @@ public class MandalaMaker extends JApplet {
 	    int x = e.getX();
 	    int y = e.getY();
          
-	    if (x < 7) {
-		x = 7;
+	    if (x < 3) {
+		x = 3;
 	    }
 	
-	   if (x > getWidth() - 61) {
-	       x = getWidth() - 61;
+	   if (x > getWidth() - 57) {
+	       x = getWidth() - 57;
 	   }
 	
-	   if (y < 7) {
-	       y = 7;
+	   if (y < 4) {
+	       y = 4;
 	   }
 
-	   if (y > getHeight() - 8) {
-	       y = getHeight() - 8;
+	   if (y > getHeight() - 5) {
+	       y = getHeight() - 5;
 	   }
 
 	   /*
