@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import java.lang.Math;
 
 /* http://math.hws.edu/eck/cs124/javanotes6/source/SimplePaint.java  */
 
