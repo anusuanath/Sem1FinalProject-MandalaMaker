@@ -84,6 +84,7 @@ public class MandalaMaker extends JApplet {
 
 	    //THIS IS X-AXIS
 	    g.drawLine(0, height/2, width-56, height/2);
+
 	}
 
 	private void changeColor(int y) {   
@@ -182,20 +183,20 @@ public class MandalaMaker extends JApplet {
 	    int x = e.getX();
 	    int y = e.getY();
          
-	    if (x < 7) {
-		x = 7;
+	    if (x < 3) {
+		x = 3;
 	    }
 	
-	   if (x > getWidth() - 61) {
-	       x = getWidth() - 61;
+	   if (x > getWidth() - 57) {
+	       x = getWidth() - 57;
 	   }
 	
-	   if (y < 7) {
-	       y = 7;
+	   if (y < 4) {
+	       y = 4;
 	   }
 
-	   if (y > getHeight() - 8) {
-	       y = getHeight() - 8;
+	   if (y > getHeight() - 5) {
+	       y = getHeight() - 5;
 	   }
 
 	   /*
@@ -204,6 +205,27 @@ public class MandalaMaker extends JApplet {
 	   graphicsForDrawing.drawLine(pX + 4, pY + 4, x + 4, y + 4);
 	   graphicsForDrawing.drawLine(pX - 2, pY - 2, x - 2, y - 2);
 	   graphicsForDrawing.drawLine(pX - 4, pY - 4, x - 4, y - 4);
+	   */
+
+<<<<<<< HEAD
+	   graphicsForDrawing.drawLine(pX, pY, x, y);
+	   graphicsForDrawing.drawLine(pX, height - pY, x, height - y);
+	   graphicsForDrawing.drawLine(width - pX, pY, width - x, y);
+	   graphicsForDrawing.drawLine(width - pX, height - pY, width - x, height - y);
+=======
+	   /*
+	   
+	   if (x < width/2) {
+	       graphicsForDrawing.drawLine(pX, pY, x, y);
+	       graphicsForDrawing.drawLine(width - pX, pY, width - x, y);
+	   }
+
+	   if (x > width/2) {
+	       graphicsForDrawing.drawLine(pX, pY, x, y);
+	       graphicsForDrawing.drawLine(width - pX, pY, width - x, y);
+	   }
+>>>>>>> racheltriestodostuff
+	   
 	   */
 
 	   graphicsForDrawing.drawLine(pX, pY, x, y);
