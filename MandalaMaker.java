@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import java.lang.Math;
 
 /* http://math.hws.edu/eck/cs124/javanotes6/source/SimplePaint.java  */
 
@@ -175,7 +176,8 @@ public class MandalaMaker extends JApplet {
 	public void mouseDragged(MouseEvent e) {
 	    int width = getWidth() - 56;
 	    int height = getHeight();
-
+	    int angle = 360/2;
+	    double theta = Math.toRadians(angle);
 	    if (dragging == false) {
 		return;
 	    }
@@ -222,13 +224,23 @@ public class MandalaMaker extends JApplet {
 	   */
 
 	   // 2 AXES
+
+	   /*
 	   graphicsForDrawing.drawLine(pX, pY, x, y);
 	   graphicsForDrawing.drawLine(pX, height - pY, x, height - y);
 	   graphicsForDrawing.drawLine(width - pX, pY, width - x, y);
 	   graphicsForDrawing.drawLine(width - pX, height - pY, width - x, height - y);
+	   */
 	   
+	   graphicsForDrawing.drawLine(pX, pY, x, y);
+	   
+	   graphicsForDrawing.drawLine(((int)(pX * Math.cos(theta) - pY * Math.sin(theta)) + (width)),
+				       ((int)(pX * Math.sin(theta) + pY * Math.cos(theta)) + (height)),
+				       ((int)(x * Math.cos(theta) - y * Math.sin(theta)) + (width)),
+				       ((int)(x * Math.sin(theta) + y * Math.cos(theta))) + (height));
 	   pX = x;
 	   pY = y;
+
 	}
        
 	public void mouseEntered(MouseEvent evt) { }
