@@ -228,7 +228,7 @@ public class MandalaMaker extends JApplet {
 	   // 2 AXES
 	   //>>>>>>> master
 	   //int theta = 90;
-	   int theta = 180;
+	   double theta = Math.toRadians(180);
 	   
 	   graphicsForDrawing.drawLine(pX, pY, x, y);
 	   graphicsForDrawing.drawLine(((int)((pX-width/2) * Math.cos(theta) - (pY-height/2) * Math.sin(theta)) + width/2),
