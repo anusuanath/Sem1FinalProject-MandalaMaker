@@ -230,6 +230,10 @@ public class MandalaMaker3 extends JApplet {
 	   graphicsForDrawing.drawLine(pX, height - pY, x, height - y);
 	   graphicsForDrawing.drawLine(width - pX, pY, width - x, y);
 	   graphicsForDrawing.drawLine(width - pX, height - pY, width - x, height - y);
+	   graphicsForDrawing.drawLine(pY, pX, y, x);
+	   graphicsForDrawing.drawLine(height - pY, pX, height - y, x);
+	   graphicsForDrawing.drawLine(pY, width - pX, y, width - x);
+	   graphicsForDrawing.drawLine(height - pY, width - pX, height - y, width - x);
 	   
 	   pX = x;
 	   pY = y;
