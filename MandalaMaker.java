@@ -85,6 +85,7 @@ public class MandalaMaker extends JApplet {
 
 	    //THIS IS X-AXIS
 	    g.drawLine(0, height/2, width-56, height/2);
+
 	}
 
 	private void changeColor(int y) {   
@@ -183,20 +184,20 @@ public class MandalaMaker extends JApplet {
 	    int x = e.getX();
 	    int y = e.getY();
          
-	    if (x < 7) {
-		x = 7;
+	    if (x < 3) {
+		x = 3;
 	    }
 	
-	   if (x > getWidth() - 61) {
-	       x = getWidth() - 61;
+	   if (x > getWidth() - 57) {
+	       x = getWidth() - 57;
 	   }
 	
-	   if (y < 7) {
-	       y = 7;
+	   if (y < 4) {
+	       y = 4;
 	   }
 
-	   if (y > getHeight() - 8) {
-	       y = getHeight() - 8;
+	   if (y > getHeight() - 5) {
+	       y = getHeight() - 5;
 	   }
 
 	   /*
@@ -206,10 +207,43 @@ public class MandalaMaker extends JApplet {
 	   graphicsForDrawing.drawLine(pX - 2, pY - 2, x - 2, y - 2);
 	   graphicsForDrawing.drawLine(pX - 4, pY - 4, x - 4, y - 4);
 	   */
-
+	   /*
+<<<<<<< HEAD
 	   //reflects across y-axis
+=======
+	   /*
+	   
+	   if (x < width/2) {
+	       graphicsForDrawing.drawLine(pX, pY, x, y);
+	       graphicsForDrawing.drawLine(width - pX, pY, width - x, y);
+	   }
+
+	   if (x > width/2) {
+	       graphicsForDrawing.drawLine(pX, pY, x, y);
+	       graphicsForDrawing.drawLine(width - pX, pY, width - x, y);
+	   }
+	   
+	   */
+
+	   // 2 AXES
+	   //>>>>>>> master
+	   // int theta = 90;
+	   int theta = 180;
+	   
 	   graphicsForDrawing.drawLine(pX, pY, x, y);
-	   graphicsForDrawing.drawLine(pX * cos(180) - pY * sin(180), pX * sin(180) + pY * cos(180), x * cos(180) - y * sin(180), x * sin(180) + y * cos(180));
+	   graphicsForDrawing.drawLine(((int)((pX-width/2) * Math.cos(theta) - pY * Math.sin(theta)) + width/2),
+				       ((int)((pX-width/2) * Math.sin(theta) + pY * Math.cos(theta))),
+				       ((int)((x-width/2) * Math.cos(theta) - y * Math.sin(theta)) + width/2),
+				       ((int)((x-width/2) * Math.sin(theta) + y * Math.cos(theta))));
+				       
+	   /*
+	     ((int)(pX * Math.cos(theta) - pY * Math.sin(theta)) + (width)),
+	     ((int)(pX * Math.sin(theta) + pY * Math.cos(theta)) + (height)),
+	     ((int)(x * Math.cos(theta) - y * Math.sin(theta)) + (width)),
+	     ((int)(x * Math.sin(theta) + y * Math.cos(theta))) + (height));
+	   */
+
+				       
 	   /*reflects across x-axis
 	   graphicsForDrawing.drawLine(width - pX, pY, width - x, y);
 	   graphicsForDrawing.drawLine(width - pX, height - pY, width - x, height - y);
