@@ -4,7 +4,7 @@ import javax.swing.*;
 
 /* http://math.hws.edu/eck/cs124/javanotes6/source/SimplePaint.java  */
 
-public class MandalaMaker extends JApplet {
+public class MandalaMaker1 extends JApplet {
    
     public static void main(String[] args) {
 	JFrame window = new JFrame("Mandala Maker");
@@ -30,7 +30,7 @@ public class MandalaMaker extends JApplet {
 	    YELLOW = 6;
 	private int currentColor = BLACK;      
 	private int pX, pY;      
-	private boolean dragging;
+ 	private boolean dragging;
 	private Graphics graphicsForDrawing;
 	
 	panel() {
@@ -223,9 +223,7 @@ public class MandalaMaker extends JApplet {
 
 	   // 2 AXES
 	   graphicsForDrawing.drawLine(pX, pY, x, y);
-	   graphicsForDrawing.drawLine(pX, height - pY, x, height - y);
 	   graphicsForDrawing.drawLine(width - pX, pY, width - x, y);
-	   graphicsForDrawing.drawLine(width - pX, height - pY, width - x, height - y);
 	   
 	   pX = x;
 	   pY = y;
