@@ -83,7 +83,7 @@ public class MandalaMaker1 extends JApplet {
 	    g.drawLine((width - 56)/2, 0, (width - 56)/2, height);
 
 	    //THIS IS X-AXIS
-	    g.drawLine(0, height/2, width-56, height/2);
+	    //g.drawLine(0, height/2, width-56, height/2);
 
 	}
 
