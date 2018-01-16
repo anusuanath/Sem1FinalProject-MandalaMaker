@@ -72,7 +72,7 @@ public class MandalaMaker extends JApplet {
 		dragging = true;
 		setUpDrawingGraphics();
 	    }     
-	}      
+	}
 
        public void mouseReleased(MouseEvent evt) {
 	   if (dragging == false) {
