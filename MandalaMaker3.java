@@ -4,7 +4,7 @@ import javax.swing.*;
 
 /* http://math.hws.edu/eck/cs124/javanotes6/source/SimplePaint.java  */
 
-public class MandalaMaker2 extends JApplet {
+public class MandalaMaker3 extends JApplet {
    
     public static void main(String[] args) {
 	JFrame window = new JFrame("Mandala Maker");
