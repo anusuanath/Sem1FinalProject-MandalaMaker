@@ -8,14 +8,9 @@ public class CGMoveALine extends JFrame {
     public static final int CANVAS_WIDTH = 500;
     public static final int CANVAS_HEIGHT = 250;
  
-    private int pX = 10;
-    private int pY = 50;
     private int x = 10;
     private int y = 100;
-    private boolean dragging;
-
-    private Graphics g;
-    
+        
     private DrawCanvas canvas;
 
     public CGMoveALine() {
@@ -45,17 +40,6 @@ public class CGMoveALine extends JFrame {
 	btnPanel.add(lColor);
 	btnPanel.add(colorpane);
 	
-	/*
-	btnLeft.addActionListener(new ActionListener() {
-		public void actionPerformed(ActionEvent evt) {
-		    pX -= 10;
-		    x -= 10;
-		    canvas.repaint();
-		    requestFocus();
-		}
-	    });
-	*/
-
 	canvas = new DrawCanvas();
 	canvas.setPreferredSize(new Dimension(CANVAS_WIDTH, CANVAS_HEIGHT));
 		
@@ -71,12 +55,22 @@ public class CGMoveALine extends JFrame {
 	requestFocus();
    }
  
-    class DrawCanvas extends JPanel implements MouseMotionListener {
+    class DrawCanvas extends JPanel implements MouseListener, MouseMotionListener {
+
+	private int pX = 10;
+	private int pY = 50;
+	private boolean dragging;
+
+	private Graphics g;
+
 	@Override
 	public void paintComponent(Graphics g) {
 	    super.paintComponent(g);
 	    setBackground(Color.WHITE);
 	    g.setColor(Color.BLACK);
+	    g.drawLine(CANVAS_WIDTH/2, 0, CANVAS_WIDTH/2, CANVAS_HEIGHT); //THIS IS Y-AXIS
+	    g.drawLine(0, CANVAS_HEIGHT/2, CANVAS_WIDTH, CANVAS_HEIGHT/2); //THIS IS X-AXIS
+
 	}
 
 	public void mousePressed(MouseEvent e) {    
