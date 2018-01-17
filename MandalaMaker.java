@@ -86,6 +86,10 @@ public class MandalaMaker extends JApplet {
 	    //THIS IS X-AXIS
 	    g.drawLine(0, height/2, width-56, height/2);
 
+	    //DIAGONAL AXES
+	    g.drawLine(0, 0, width-56, height);
+	    g.drawLine(0, height, width-56, 0);
+
 	}
 
 	private void changeColor(int y) {   
@@ -202,25 +206,29 @@ public class MandalaMaker extends JApplet {
 
 
 	   /*reflects across y-axis
-	   
-	   if (x < width/2) {
-	       graphicsForDrawing.drawLine(pX, pY, x, y);
-	       graphicsForDrawing.drawLine(width - pX, pY, width - x, y);
-	   }
-
-	   if (x > width/2) {
-	       graphicsForDrawing.drawLine(pX, pY, x, y);
-	       graphicsForDrawing.drawLine(width - pX, pY, width - x, y);
-	   }
+	  
+	   graphicsForDrawing.drawLine(pX, pY, x, y);
+	   graphicsForDrawing.drawLine(width - pX, pY, width - x, y);
+	  
 
 	   //reflects across x-axis
 
 	   graphicsForDrawing.drawLine(width - pX, pY, width - x, y);
 	   graphicsForDrawing.drawLine(width - pX, height - pY, width - x, height - y);
-       	   
-	   */
+       	   */
+	   //x-, y-, and diagonal axes refelctions
 
-	   //attempting to use formula
+	   graphicsForDrawing.drawLine(pX, pY, x, y);
+	   graphicsForDrawing.drawLine(pX, height - pY, x, height - y);
+	   graphicsForDrawing.drawLine(width - pX, pY, width - x, y);
+	   graphicsForDrawing.drawLine(width - pX, height - pY, width - x, height - y);
+	   graphicsForDrawing.drawLine(pY, pX, y, x);
+	   graphicsForDrawing.drawLine(height - pY, pX, height - y, x);
+	   graphicsForDrawing.drawLine(pY, width - pX, y, width - x);
+	   graphicsForDrawing.drawLine(height - pY, width - pX, height - y, width - x);
+	   
+
+	   /*//attempting to use formula
 
 	   //for one axis
 	   double theta = Math.toRadians(180);
@@ -231,7 +239,7 @@ public class MandalaMaker extends JApplet {
 				       ((int)((x-width/2) * Math.cos(theta) - (y-height/2) * Math.sin(theta)) + width/2),
 				       (-1*(int)((x-width/2) * Math.sin(theta) + (y-height/2) * Math.cos(theta)) + height/2));
 	   
-	   
+	   */
 	   /*for two axis
 	     double theta = Math.toRadians(90);
 	   
