@@ -3,21 +3,47 @@ import java.awt.event.*;
 import javax.swing.*;
 
 @SuppressWarnings("serial")
-public class MMaker extends JFrame {
+public class MMaker extends JFrame implements ActionListener {
 
     public static final int width = 750;
     public static final int height = 750;
-    private Graphics g;
+
+    private String sN = "1";
+    private int sn = Integer.parseInt(sN);
+    private int angle = 360 / (2 * sn);
+    
     private DrawCanvas canvas;
+
+    public void actionPerformed(ActionEvent e) {
+	String s = e.getActionCommand();
+	System.out.println(s);
+	if(s.equals("Clear")) {
+	    repaint();
+	}
+	else {
+	    sendHelp(s);
+	    System.out.println("sN: " + sN + "\tsn: " + sn + "\tangle: " + angle);
+	}
+    }
+
+    private void sendHelp (String s) {
+	sN = s;
+	sn = Integer.parseInt(sN);
+	angle = 360 / (2 * sn);
+    }
     
     public MMaker() {
 	
 	JPanel btnPanel = new JPanel(new FlowLayout());
 	JLabel lAxes = new JLabel("# Axes");
-	JTextField txtAxes = new JTextField(5);
+	JTextField txtAxes = new JTextField(sN,5);
 	JLabel lColor = new JLabel("Color: ");
 	JButton bClear = new JButton("Clear");
+
+	txtAxes.addActionListener(this);
+	bClear.addActionListener(this);
 	
+	/*
 	DefaultListModel colors = new DefaultListModel();
 	colors.addElement("black");
 	colors.addElement("white"); 
@@ -27,17 +53,21 @@ public class MMaker extends JFrame {
 	colors.addElement("blue");
 	
 	JList color = new JList(colors);
+	color.getSelectionModel();
+	color.addListSelectionListener(new SharedListSelectionHandler());
 	color.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 	color.setLayoutOrientation(JList.VERTICAL);
 	color.setVisibleRowCount(-1);
+	
 	JScrollPane colorpane = new JScrollPane(color);
 	colorpane.setPreferredSize(new Dimension(75, 100));
-
+	*/
+	
 	btnPanel.setPreferredSize(new Dimension(150,750));
 	btnPanel.add(lAxes);
 	btnPanel.add(txtAxes);
-	btnPanel.add(lColor);
-	btnPanel.add(colorpane);
+	//btnPanel.add(lColor);
+	//btnPanel.add(colorpane);
 	btnPanel.add(bClear);
 	
 	canvas = new DrawCanvas();
@@ -47,16 +77,17 @@ public class MMaker extends JFrame {
 	pane.setLayout(new BorderLayout());
 	pane.add(canvas, BorderLayout.CENTER);
 	pane.add(btnPanel, BorderLayout.EAST);
- 
-	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	
+ 	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	setTitle("Mandala Maker");
 	pack();
 	setResizable(false);
 	setVisible(true);
 	requestFocus();
-   }
- 
-    public static class DrawCanvas extends JPanel implements MouseListener, MouseMotionListener {
+
+    }
+
+    public class DrawCanvas extends JPanel implements MouseListener, MouseMotionListener {
 	private int pX, pY;
 	private boolean dragging;
 	private Graphics g;
@@ -84,7 +115,7 @@ public class MMaker extends JFrame {
 	    g.drawLine(width/2, 0, width/2, height); //THIS IS Y-AXIS
 	    g.drawLine(0, height/2, width, height/2); //THIS IS X-AXIS
 	}
-
+	
 	public void mousePressed(MouseEvent e) {    
 	    int x = e.getX();
 	    int y = e.getY();
@@ -127,19 +158,21 @@ public class MMaker extends JFrame {
 	    int width = getWidth();
 	    int height = getHeight();
 	    
-	    int angle = 360/2;
 	    double theta = Math.toRadians(angle);
 	    
 	    if (dragging == false) {
 		return;
 	    }
 
-     	    g.drawLine(pX, pY, x, y);
-	   
-	    g.drawLine(((int)(pX * Math.cos(theta) - pY * Math.sin(theta)) + (width)),
-		      ((int)(pX * Math.sin(theta) + pY * Math.cos(theta)) + (height)),
-		      ((int)(x * Math.cos(theta) - y * Math.sin(theta)) + (width)),
-		      ((int)(x * Math.sin(theta) + y * Math.cos(theta))) + (height));
+	    g.drawLine(pX, pY, x, y);
+	    
+	    for (int i = 1; i < (2 * sn); i++) {
+		g.drawLine(((int)(pX * Math.cos(theta) - pY * Math.sin(theta)) + (width)),
+			   ((int)(pX * Math.sin(theta) + pY * Math.cos(theta)) + (height)),
+			   ((int)(x * Math.cos(theta) - y * Math.sin(theta)) + (width)),
+			   ((int)(x * Math.sin(theta) + y * Math.cos(theta))) + (height));
+	    }
+	    
 	    pX = x;
 	    pY = y;
 
