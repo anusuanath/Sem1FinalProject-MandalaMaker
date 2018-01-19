@@ -3,19 +3,20 @@ import java.awt.event.*;
 import javax.swing.*;
 
 @SuppressWarnings("serial")
-public class CGMoveALine extends JFrame {
+public class MMaker extends JFrame {
 
-    public static final int CANVAS_WIDTH = 700;
-    public static final int CANVAS_HEIGHT = 700;
+    public static final int width = 700;
+    public static final int height = 700;
     private Graphics g;
     private DrawCanvas canvas;
     
-    public CGMoveALine() {
+    public MMaker() {
 	
 	JPanel btnPanel = new JPanel(new FlowLayout());
 	JLabel lAxes = new JLabel("# Axes");
 	JTextField txtAxes = new JTextField(2);
 	JLabel lColor = new JLabel("Color: ");
+	JButton bClear = new JButton("Clear");
 	
 	DefaultListModel colors = new DefaultListModel();
 	colors.addElement("black");
@@ -30,20 +31,21 @@ public class CGMoveALine extends JFrame {
 	color.setLayoutOrientation(JList.VERTICAL);
 	color.setVisibleRowCount(-1);
 	JScrollPane colorpane = new JScrollPane(color);
-	colorpane.setPreferredSize(new Dimension(150, 50));
+	colorpane.setPreferredSize(new Dimension(75, 100));
 	
 	btnPanel.add(lAxes);
 	btnPanel.add(txtAxes);
 	btnPanel.add(lColor);
 	btnPanel.add(colorpane);
+	btnPanel.add(bClear);
 	
 	canvas = new DrawCanvas();
-	canvas.setPreferredSize(new Dimension(CANVAS_WIDTH, CANVAS_HEIGHT));
+	canvas.setPreferredSize(new Dimension(width, height));
 		
 	Container pane = getContentPane();
 	pane.setLayout(new BorderLayout());
 	pane.add(canvas, BorderLayout.CENTER);
-	pane.add(btnPanel, BorderLayout.SOUTH);
+	pane.add(btnPanel, BorderLayout.EAST);
  
 	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	setTitle("Mandala Maker");
@@ -53,13 +55,8 @@ public class CGMoveALine extends JFrame {
    }
  
     public static class DrawCanvas extends JPanel implements MouseListener, MouseMotionListener {
-	private int x = 10;
-	private int y = 100;
-
-	private int pX = 10;
-	private int pY = 50;
+	private int pX, pY;
 	private boolean dragging;
-
 	private Graphics g;
 
 	DrawCanvas() {
@@ -67,7 +64,7 @@ public class CGMoveALine extends JFrame {
 	    addMouseMotionListener(this);
 	}
 	
-	private void setUpDrawingGraphics() {
+	private void setUp() {
 	    g = getGraphics();
 	    g.setColor(Color.BLACK);
 	}
@@ -75,10 +72,15 @@ public class CGMoveALine extends JFrame {
 	@Override
 	public void paintComponent(Graphics g) {
 	    super.paintComponent(g);
+	    int width = getWidth();
+	    int height = getHeight();
+	    
 	    setBackground(Color.WHITE);
+	    
 	    g.setColor(Color.BLACK);
-	    g.drawLine(CANVAS_WIDTH/2, 0, CANVAS_WIDTH/2, CANVAS_HEIGHT); //THIS IS Y-AXIS
-	    g.drawLine(0, CANVAS_HEIGHT/2, CANVAS_WIDTH, CANVAS_HEIGHT/2); //THIS IS X-AXIS
+	    
+	    g.drawLine(width/2, 0, width/2, height); //THIS IS Y-AXIS
+	    g.drawLine(0, height/2, width, height/2); //THIS IS X-AXIS
 	}
 
 	public void mousePressed(MouseEvent e) {    
@@ -102,17 +104,30 @@ public class CGMoveALine extends JFrame {
 		pX = x;
 		pY = y;
 		dragging = true;
-		setUpDrawingGraphics();
+		setUp();
 	    }
 	}
 
+	public void mouseReleased(MouseEvent e) {
+	   if (dragging == false) {
+	       return;
+	   }
+	   dragging = false;
+	   g.dispose();
+	   g = null;
+	}
+
+	
 	public void mouseDragged(MouseEvent e) {
 	    int x = e.getX();
 	    int y = e.getY();
+	    
 	    int width = getWidth();
 	    int height = getHeight();
+	    
 	    int angle = 360/2;
 	    double theta = Math.toRadians(angle);
+	    
 	    if (dragging == false) {
 		return;
 	    }
@@ -127,13 +142,6 @@ public class CGMoveALine extends JFrame {
 	    pY = y;
 
 	}
-
-	public void mouseReleased(MouseEvent e) {
-	   if (dragging == false) {
-	       return;
-	   }
-	   dragging = false;
-	}
 	
 	public void mouseEntered(MouseEvent e) { }
 	public void mouseExited(MouseEvent e) { }
@@ -146,7 +154,7 @@ public class CGMoveALine extends JFrame {
 	SwingUtilities.invokeLater(new Runnable() {
 		@Override
 		public void run() {
-		    new CGMoveALine();
+		    new MMaker();
 		}
 	    });
     }
