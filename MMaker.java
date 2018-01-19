@@ -5,8 +5,8 @@ import javax.swing.*;
 @SuppressWarnings("serial")
 public class MMaker extends JFrame {
 
-    public static final int width = 700;
-    public static final int height = 700;
+    public static final int width = 750;
+    public static final int height = 750;
     private Graphics g;
     private DrawCanvas canvas;
     
@@ -14,7 +14,7 @@ public class MMaker extends JFrame {
 	
 	JPanel btnPanel = new JPanel(new FlowLayout());
 	JLabel lAxes = new JLabel("# Axes");
-	JTextField txtAxes = new JTextField(2);
+	JTextField txtAxes = new JTextField(5);
 	JLabel lColor = new JLabel("Color: ");
 	JButton bClear = new JButton("Clear");
 	
@@ -32,7 +32,8 @@ public class MMaker extends JFrame {
 	color.setVisibleRowCount(-1);
 	JScrollPane colorpane = new JScrollPane(color);
 	colorpane.setPreferredSize(new Dimension(75, 100));
-	
+
+	btnPanel.setPreferredSize(new Dimension(150,750));
 	btnPanel.add(lAxes);
 	btnPanel.add(txtAxes);
 	btnPanel.add(lColor);
@@ -50,6 +51,7 @@ public class MMaker extends JFrame {
 	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	setTitle("Mandala Maker");
 	pack();
+	setResizable(false);
 	setVisible(true);
 	requestFocus();
    }
