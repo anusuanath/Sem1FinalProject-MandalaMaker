@@ -5,21 +5,18 @@ import javax.swing.*;
 @SuppressWarnings("serial")
 public class CGMoveALine extends JFrame {
 
-    public static final int CANVAS_WIDTH = 500;
-    public static final int CANVAS_HEIGHT = 250;
- 
-    private int x = 10;
-    private int y = 100;
-        
+    public static final int CANVAS_WIDTH = 700;
+    public static final int CANVAS_HEIGHT = 700;
+    private Graphics g;
     private DrawCanvas canvas;
-
+    
     public CGMoveALine() {
-
+	
 	JPanel btnPanel = new JPanel(new FlowLayout());
 	JLabel lAxes = new JLabel("# Axes");
 	JTextField txtAxes = new JTextField(2);
 	JLabel lColor = new JLabel("Color: ");
-
+	
 	DefaultListModel colors = new DefaultListModel();
 	colors.addElement("black");
 	colors.addElement("white"); 
@@ -55,7 +52,9 @@ public class CGMoveALine extends JFrame {
 	requestFocus();
    }
  
-    class DrawCanvas extends JPanel implements MouseListener, MouseMotionListener {
+    public static class DrawCanvas extends JPanel implements MouseListener, MouseMotionListener {
+	private int x = 10;
+	private int y = 100;
 
 	private int pX = 10;
 	private int pY = 50;
@@ -63,6 +62,16 @@ public class CGMoveALine extends JFrame {
 
 	private Graphics g;
 
+	DrawCanvas() {
+	    addMouseListener(this);
+	    addMouseMotionListener(this);
+	}
+	
+	private void setUpDrawingGraphics() {
+	    g = getGraphics();
+	    g.setColor(Color.BLACK);
+	}
+	
 	@Override
 	public void paintComponent(Graphics g) {
 	    super.paintComponent(g);
@@ -70,7 +79,6 @@ public class CGMoveALine extends JFrame {
 	    g.setColor(Color.BLACK);
 	    g.drawLine(CANVAS_WIDTH/2, 0, CANVAS_WIDTH/2, CANVAS_HEIGHT); //THIS IS Y-AXIS
 	    g.drawLine(0, CANVAS_HEIGHT/2, CANVAS_WIDTH, CANVAS_HEIGHT/2); //THIS IS X-AXIS
-
 	}
 
 	public void mousePressed(MouseEvent e) {    
@@ -79,7 +87,7 @@ public class CGMoveALine extends JFrame {
 
 	    int width = getWidth();
 	    int height = getHeight();
-	    
+		
 	    if (dragging == true) {
 		return;
 	    }
@@ -95,22 +103,12 @@ public class CGMoveALine extends JFrame {
 		pY = y;
 		dragging = true;
 		setUpDrawingGraphics();
-	    }     
+	    }
 	}
 
-	private void setUpDrawingGraphics() {
-	    g = getGraphics();
-	    g.setColor(Color.BLACK);
-	}
-	
-	public void mouseReleased(MouseEvent e) {
-	   if (dragging == false) {
-	       return;
-	   }
-	   dragging = false;
-       }
-      
 	public void mouseDragged(MouseEvent e) {
+	    int x = e.getX();
+	    int y = e.getY();
 	    int width = getWidth();
 	    int height = getHeight();
 	    int angle = 360/2;
@@ -119,10 +117,7 @@ public class CGMoveALine extends JFrame {
 		return;
 	    }
 
-	    int x = e.getX();
-	    int y = e.getY();
-
-	    g.drawLine(pX, pY, x, y);
+     	    g.drawLine(pX, pY, x, y);
 	   
 	    g.drawLine(((int)(pX * Math.cos(theta) - pY * Math.sin(theta)) + (width)),
 		      ((int)(pX * Math.sin(theta) + pY * Math.cos(theta)) + (height)),
@@ -132,7 +127,14 @@ public class CGMoveALine extends JFrame {
 	    pY = y;
 
 	}
-       
+
+	public void mouseReleased(MouseEvent e) {
+	   if (dragging == false) {
+	       return;
+	   }
+	   dragging = false;
+	}
+	
 	public void mouseEntered(MouseEvent e) { }
 	public void mouseExited(MouseEvent e) { }
 	public void mouseClicked(MouseEvent e) { }
