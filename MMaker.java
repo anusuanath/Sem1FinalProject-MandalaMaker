@@ -166,17 +166,17 @@ public class MMaker extends JFrame implements ActionListener {
 
 	    g.drawLine(pX, pY, x, y);
 
-	    int x1 = pX;
-	    int y1 = pY;
+	    int x1 = pX - width/2;
+	    int y1 = pY - height/2;
 
-	    int x2 = x;
-	    int y2 = y;
+	    int x2 = x - width/2;
+	    int y2 = y - height/2;
 	    
-	    for (int i = 1; i < (2 * sn); i++) {
-		int x3 = ((int)(x1 * i * Math.cos(theta) - y1 * i * Math.sin(theta)));
-		int y3 = ((int)(x1 * i * Math.sin(theta) + y1 * i * Math.cos(theta)));
-		int x4 = ((int)(x2 * i * Math.cos(theta) - y2 * i * Math.sin(theta)));
-		int y4 = ((int)(x2 * i * Math.sin(theta) + y2 * i * Math.cos(theta)));
+	    for (int i = 1; i < (2 * sn) + 1; i++) {
+		int x3 = ((int)(x1 * i * Math.cos(theta) - y1 * i * Math.sin(theta))) + width/2;
+		int y3 = ((int)(x1 * i * Math.sin(theta) + y1 * i * Math.cos(theta))) + height/2;
+		int x4 = ((int)(x2 * i * Math.cos(theta) - y2 * i * Math.sin(theta))) + width/2;
+		int y4 = ((int)(x2 * i * Math.sin(theta) + y2 * i * Math.cos(theta))) + height/2;
 
 		x1 = x3;
 		y1 = y3;
@@ -185,11 +185,6 @@ public class MMaker extends JFrame implements ActionListener {
 
 		g.drawLine(x3, y3, x4, y4);
 	    }
-
-	    g.drawLine(((int)(pX * Math.cos(theta) - pY * Math.sin(theta)) + (width)),
-		       ((int)(pX * Math.sin(theta) + pY * Math.cos(theta)) + (height)),
-		       ((int)(x * Math.cos(theta) - y * Math.sin(theta)) + (width)),
-		       ((int)(x * Math.sin(theta) + y * Math.cos(theta))) + (height));
 	    
 	    pX = x;
 	    pY = y;
