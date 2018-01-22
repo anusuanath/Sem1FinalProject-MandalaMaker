@@ -48,17 +48,7 @@ public class MandalaMaker extends JApplet {
 	    g.drawLine(0, height, width, 0);
 
 	}
-	/*
-	private void changeColor(int y) {   
-	    int width = getWidth();
-	    int height = getHeight();
-	    int colorSpacing = (height - 56) / 7;
-	    int newColor = y / colorSpacing;
-=======
->>>>>>> racheltriestodostuff
-	    
-	  
-	*/
+
 	private void setUpDrawingGraphics() {
 	    graphicsForDrawing = getGraphics();
 	    graphicsForDrawing.setColor(Color.BLACK);
@@ -112,38 +102,20 @@ public class MandalaMaker extends JApplet {
 
 	    int x = e.getX();
 	    int y = e.getY();
-	    /*
-<<<<<<< HEAD
-	    if (x < 3) {
-	    x = 3;
-	    }
-	
-	    if (x > getWidth() - 57) {
-	    x = getWidth() - 57;
-	    }
-	
-	    if (y < 4) {
-	    y = 4;
-	    }
-
-	    if (y > getHeight() - 5) {
-	    y = getHeight() - 5;
-	    }
-	    */
-
+	    
 	    /*reflects across y-axis
 	  
 	      graphicsForDrawing.drawLine(pX, pY, x, y);
 	      graphicsForDrawing.drawLine(width - pX, pY, width - x, y);
 	  
-
 	      //reflects across x-axis
 
 	      graphicsForDrawing.drawLine(width - pX, pY, width - x, y);
 	      graphicsForDrawing.drawLine(width - pX, height - pY, width - x, height - y);
+
 	    */
-	  
-	    // 2 AXES
+
+	    /*4 AXES
 
 	    graphicsForDrawing.drawLine(pX, pY, x, y);
 	    graphicsForDrawing.drawLine(pX, height - pY, x, height - y);
@@ -155,19 +127,24 @@ public class MandalaMaker extends JApplet {
 	    graphicsForDrawing.drawLine(pY, width - pX, y, width - x);
 	    graphicsForDrawing.drawLine(height - pY, width - pX, height - y, width - x);
 	   
+	    */
 
-	    /*attempting to use formula
+	    //attempting to use formula
+	    //the x- and y-coordinates if they were on a Cartesian plane
+	    int cart_pX = pX - width/2;
+	    int cart_pY = height/2 - pY;
+	    int cart_x = x - width/2;
+	    int cart_y = height/2 - y;
 
 	    //for one axis
-	    double theta = Math.toRadians(180);
 	   
 	    graphicsForDrawing.drawLine(pX, pY, x, y);
-	    graphicsForDrawing.drawLine(((int)((pX-width/2) * Math.cos(theta) - (pY-height/2) * Math.sin(theta)) + width/2),
-	    (-1*(int)((pX-width/2) * Math.sin(theta) + (pY-height/2) * Math.cos(theta)) +  height/2),
-	    ((int)((x-width/2) * Math.cos(theta) - (y-height/2) * Math.sin(theta)) + width/2),
-	    (-1*(int)((x-width/2) * Math.sin(theta) + (y-height/2) * Math.cos(theta)) + height/2));
+	    graphicsForDrawing.drawLine(((int)(cart_pX*Math.cos(theta) - cart_pY*Math.sin(theta)) + width/2),
+					((int)(cart_pX*Math.sin(theta) + cart_pY*Math.cos(theta)) +  height/2),
+					((int)(cart_x*Math.cos(theta) - cart_y*Math.sin(theta)) + width/2),
+					((int)(cart_x*Math.sin(theta) + cart_y*Math.cos(theta)) + height/2));
 	   
-	    */
+	    
 	    
 	    /*for two axis
 	      double theta = Math.toRadians(90);
