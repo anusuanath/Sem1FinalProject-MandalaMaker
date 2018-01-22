@@ -154,13 +154,10 @@ public class MMaker extends JFrame implements ActionListener {
 	    int y1 = height/2 - pY;
 	    
 	    int x2 = x - width/2;
-<<<<<<< HEAD
 	    int y2 = height/2 - y;
-=======
-	    int y2 = y - height/2;
+
 
 	    System.out.println("#: " + 1 + ", " + 0 + "\n\tx1: " + x1 + "\n\twidth/2: " + (x1 + width/2) + "\n\ty1: " + y1 + "\n\theight/2: " + (y1 + height/2) +  "\n\tx2: " + x2 + "\n\twidth/2: " + (x2 + width/2) + "\n\ty2: " + y2 + "\n\theight/2: " + (y2 + height/2));
->>>>>>> racheltriestodostuff
 	    
 	    for (int i = 1; i < (2 * sn); i++) {
 		int x3 = ((int)(x1 * i * Math.cos(theta) - y1 * i * Math.sin(theta)));
@@ -173,13 +170,10 @@ public class MMaker extends JFrame implements ActionListener {
 		x2 = x4;
 		y2 = y4;
 		
-<<<<<<< HEAD
 		g.drawLine(x3 + width/2, y3 + height/2, x4 + width/2, y4 + height/2);
-=======
-		g.drawLine(x3 + width/2, y3 + width/2, x4 + width/2, y4 + width/2);
 
 		System.out.println("#: " + (i + 1) + ", " + (i * angle) + "\n\tx3: " + x3 + "\n\twidth/2: " + (x3 + width/2) + "\n\ty3: " + y3 + "\n\theight/2: " + (y3 + height/2) +  "\n\tx4: " + x4 + "\n\twidth/2: " + (x4 + width/2) + "\n\ty4: " + y4 + "\n\theight/2: " + (y4 + height/2));
->>>>>>> racheltriestodostuff
+
 	    }
 	    
 	    pX = x;
