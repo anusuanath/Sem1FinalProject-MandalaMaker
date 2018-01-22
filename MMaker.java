@@ -88,17 +88,7 @@ public class MMaker extends JFrame implements ActionListener {
 	    setBackground(Color.WHITE);
 	    
 	    g.setColor(Color.BLACK);
-	    /*
-	    //THIS IS Y-AXIS
-	    g.drawLine(width/2, 0, width/2, height);
-
-	    //THIS IS X-AXIS
-	    g.drawLine(0, height/2, width, height/2);
 	    
-	    //DIAGONAL AXES
-	    g.drawLine(0, 0, width, height);
-	    g.drawLine(0, height, width, 0);
-	    */
 	}
 	
 	public void mousePressed(MouseEvent e) {    
