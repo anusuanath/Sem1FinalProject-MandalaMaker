@@ -38,7 +38,9 @@ public class MMaker extends JFrame implements ActionListener {
 	JLabel lAxes = new JLabel("# Axes");
 	JTextField txtAxes = new JTextField(sN,5);
 	JLabel lColor = new JLabel("Color: ");
+	JButton bEnter = new JButton("Enter");
 	JButton bClear = new JButton("Clear");
+	
 
 	txtAxes.addActionListener(this);
 	bClear.addActionListener(this);
@@ -67,7 +69,8 @@ public class MMaker extends JFrame implements ActionListener {
 	btnPanel.add(lAxes);
 	btnPanel.add(txtAxes);
 	//btnPanel.add(lColor);
-	//btnPanel.add(colorpane);
+	//btnPanel.add(colorpanel);
+	btnPanel.add(bEnter);	
 	btnPanel.add(bClear);
 	
 	canvas = new DrawCanvas();
@@ -158,7 +161,6 @@ public class MMaker extends JFrame implements ActionListener {
 	   g = null;
 	}
 
-	
 	public void mouseDragged(MouseEvent e) {
 	    int x = e.getX();
 	    int y = e.getY();
