@@ -10,7 +10,7 @@ public class MMaker extends JFrame implements ActionListener {
 
     private String sN = "1";
     private int sn = Integer.parseInt(sN);
-    private int angle = 360 / (2 * sn);
+    // private int angle = 360 / (2 * sn);
     
     private DrawCanvas canvas;
 
@@ -22,14 +22,14 @@ public class MMaker extends JFrame implements ActionListener {
 	}
 	else {
 	    sendHelp(s);
-	    System.out.println("sN: " + sN + "\tsn: " + sn + "\tangle: " + angle);
+	    //System.out.println("sN: " + sN + "\tsn: " + sn + "\tangle: " + angle);
 	}
     }
 
     private void sendHelp (String s) {
 	sN = s;
 	sn = Integer.parseInt(sN);
-	angle = 360 / (2 * sn);
+	//angle = 360 / (2 * sn);
     }
     
     public MMaker() {
@@ -88,13 +88,13 @@ public class MMaker extends JFrame implements ActionListener {
 	    setBackground(Color.WHITE);
 	    
 	    g.setColor(Color.BLACK);
-	    
+	    /*
 	    //THIS IS Y-AXIS
 	    g.drawLine(width/2, 0, width/2, height);
 
 	    //THIS IS X-AXIS
 	    g.drawLine(0, height/2, width, height/2);
-	    /*
+	    
 	    //DIAGONAL AXES
 	    g.drawLine(0, 0, width, height);
 	    g.drawLine(0, height, width, 0);
@@ -142,14 +142,45 @@ public class MMaker extends JFrame implements ActionListener {
 	    int width = getWidth();
 	    int height = getHeight();
 	    
-	    double theta = Math.toRadians(angle);
+	    // double theta = Math.toRadians(angle);
 	    
 	    if (dragging == false) {
 		return;
 	    }
 	    
 	    g.drawLine(pX, pY, x, y);
-	    
+
+	    if (sn == 1){
+		g.drawLine(width/2, 0, width/2, height);
+		    
+		g.drawLine(width - pX, pY, width - x, y);
+	    }
+	    if (sn == 2){
+		g.drawLine(width/2, 0, width/2, height);
+		g.drawLine(0, height/2, width, height/2);
+		    
+		g.drawLine(pX, pY, x, y);
+		g.drawLine(pX, height - pY, x, height - y);
+		g.drawLine(width - pX, pY, width - x, y);
+		g.drawLine(width - pX, height - pY, width - x, height - y);
+	    }
+	    if (sn == 4){
+		g.drawLine(width/2, 0, width/2, height);
+		g.drawLine(0, height/2, width, height/2);
+		g.drawLine(0, 0, width, height);
+		g.drawLine(0, height, width, 0);
+		
+		g.drawLine(pX, pY, x, y);
+		g.drawLine(pX, height - pY, x, height - y);
+		g.drawLine(width - pX, pY, width - x, y);
+		g.drawLine(width - pX, height - pY, width - x, height - y);
+		
+		g.drawLine(pY, pX, y, x);
+		g.drawLine(height - pY, pX, height - y, x);
+		g.drawLine(pY, width - pX, y, width - x);
+		g.drawLine(height - pY, width - pX, height - y, width - x);
+	    }
+	    /*
 	    int x1 = pX - width/2;
 	    int y1 = height/2 - pY;
 	    
@@ -175,6 +206,7 @@ public class MMaker extends JFrame implements ActionListener {
 		System.out.println("#: " + (i + 1) + ", " + (i * angle) + "\n\tx3: " + x3 + "\n\twidth/2: " + (x3 + width/2) + "\n\ty3: " + y3 + "\n\theight/2: " + (y3 + height/2) +  "\n\tx4: " + x4 + "\n\twidth/2: " + (x4 + width/2) + "\n\ty4: " + y4 + "\n\theight/2: " + (y4 + height/2));
 
 	    }
+	    */
 	    
 	    pX = x;
 	    pY = y;
