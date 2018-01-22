@@ -2,18 +2,27 @@
 
 # Instructions
 
-## Compile
-  1. 
-     ' ' ' 
-     javac MandalaMaker1.java
-     ' ' ' 
-  2. (alternatively) java MandalaMaker2.java (this is the objectively cooler one because it has 2 axes) 
+## Clone 
+  1. Clone the repository in the terminal
+```
+git clone https://github.com/anusuanath/Sem1FinalProject-MandalaMaker.git
+```
 
-Run 
-  1. java MandalaMaker1
-  2. (alternatively) java MandalaMaker2
+## Compile
+  1. Compile the file *MandalaMaker.java*
+```
+javac MandalaMaker.java
+```
+
+## Run
+  1. Run *MandalaMaker* 
+```
+java MandalaMaker
+```
   
-Usage
-  1. Change the colors (if you want to) 
-  2. Make random scribbles (please do, it's fun!) 
-  3. Enjoy (the hardwork and product of our tears and misery)!
+## Usage
+  1. Start drawing
+  2. Change the colors (if you want to) 
+  3. Change the number of axes (please do, we worked really hard on this ;-;) 
+  4. Make random scribbles (please do, it's fun!) 
+  5. Enjoy (the hardwork and product of our tears and misery)!
