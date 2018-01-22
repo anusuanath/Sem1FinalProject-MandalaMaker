@@ -3,7 +3,8 @@
 # Instructions
 
 ## Compile
-  1. ' ' ' 
+  1. 
+     ' ' ' 
      javac MandalaMaker1.java
      ' ' ' 
   2. (alternatively) java MandalaMaker2.java (this is the objectively cooler one because it has 2 axes) 
