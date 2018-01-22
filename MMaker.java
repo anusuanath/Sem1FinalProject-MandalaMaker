@@ -112,8 +112,16 @@ public class MMaker extends JFrame implements ActionListener {
 	    
 	    g.setColor(Color.BLACK);
 	    
-	    g.drawLine(width/2, 0, width/2, height); //THIS IS Y-AXIS
-	    g.drawLine(0, height/2, width, height/2); //THIS IS X-AXIS
+	    //THIS IS Y-AXIS
+	    g.drawLine(width/2, 0, width/2, height);
+
+	    //THIS IS X-AXIS
+	    g.drawLine(0, height/2, width, height/2);
+	    /*
+	    //DIAGONAL AXES
+	    g.drawLine(0, 0, width, height);
+	    g.drawLine(0, height, width, 0);
+	    */
 	}
 	
 	public void mousePressed(MouseEvent e) {    
@@ -167,10 +175,10 @@ public class MMaker extends JFrame implements ActionListener {
 	    g.drawLine(pX, pY, x, y);
 	    
 	    int x1 = pX - width/2;
-	    int y1 = pY - height/2;
+	    int y1 = height/2 - pY;
 	    
 	    int x2 = x - width/2;
-	    int y2 = y - height/2;
+	    int y2 = height/2 - y;
 	    
 	    for (int i = 1; i < (2 * sn); i++) {
 		int x3 = ((int)(x1 * i * Math.cos(theta) - y1 * i * Math.sin(theta)));
@@ -183,7 +191,7 @@ public class MMaker extends JFrame implements ActionListener {
 		x2 = x4;
 		y2 = y4;
 		
-		g.drawLine(x3 + width/2, y3 + width/2, x4 + width/2, y4 + width/2);
+		g.drawLine(x3 + width/2, y3 + height/2, x4 + width/2, y4 + height/2);
 	    }
 	    
 	    pX = x;
