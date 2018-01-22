@@ -130,29 +130,55 @@ public class MandalaMaker extends JApplet {
 	    */
 
 	    //attempting to use formula
-	    //the x- and y-coordinates if they were on a Cartesian plane
-	    int cart_pX = pX - width/2;
-	    int cart_pY = height/2 - pY;
-	    int cart_x = x - width/2;
-	    int cart_y = height/2 - y;
 
 	    //storing pX, pY, x, y into other variables whose values can be changed
 	    int new_pX = pX;
 	    int new_pY = pY;
 	    int new_x = x;
 	    int new_y = y;
+	    
+	    //the x- and y-coordinates if they were on a Cartesian plane
+	    int cart_pX = new_pX - width/2;
+	    int cart_pY = height/2 - new_pY;
+	    int cart_x = new_x - width/2;
+	    int cart_y = height/2 - new_y;
 
 	    //for one axis
-
-	    /* graphicsForDrawing.drawLine(pX, pY, x, y);
+	    graphicsForDrawing.drawLine(pX, pY, x, y);
 	    graphicsForDrawing.drawLine(((int)(cart_pX*Math.cos(theta) - cart_pY*Math.sin(theta)) + width/2),
 					((int)(cart_pX*Math.sin(theta) + cart_pY*Math.cos(theta)) +  height/2),
 					((int)(cart_x*Math.cos(theta) - cart_y*Math.sin(theta)) + width/2),
 					((int)(cart_x*Math.sin(theta) + cart_y*Math.cos(theta)) + height/2));
 	    
-	    */
-	    //for two axis
+	    //for two axes
+	    theta = Math.toRadians(90);
+	    graphicsForDrawing.drawLine(((int)(cart_pX*Math.sin(theta) - cart_pY*Math.cos(theta)) + width/2),
+					((int)(cart_pX*Math.cos(theta) + cart_pY*Math.sin(theta)) +  height/2),
+					((int)(cart_x*Math.sin(theta) - cart_y*Math.cos(theta)) + width/2),
+					((int)(cart_x*Math.cos(theta) + cart_y*Math.sin(theta)) + height/2));
+
+	    theta = Math.toRadians(180);
+	    
+	    new_pX = (int)(cart_pX*Math.cos(theta) - cart_pY*Math.sin(theta)) + width/2;
+	    new_pY = (int)(cart_pX*Math.sin(theta) + cart_pY*Math.cos(theta)) +  height/2;
+	    new_x = (int)(cart_x*Math.cos(theta) - cart_y*Math.sin(theta)) + width/2;
+	    new_y = (int)(cart_x*Math.sin(theta) + cart_y*Math.cos(theta)) + height/2;
+
+	    cart_pX = new_pX - width/2;
+	    cart_pY = height/2 - new_pY;
+	    cart_x = new_x - width/2;
+	    cart_y = height/2 - new_y;
+	    
+	    theta = Math.toRadians(90);
+	    graphicsForDrawing.drawLine(((int)(cart_pX*Math.sin(theta) - cart_pY*Math.cos(theta)) + width/2),
+					((int)(cart_pX*Math.cos(theta) + cart_pY*Math.sin(theta)) +  height/2),
+					((int)(cart_x*Math.sin(theta) - cart_y*Math.cos(theta)) + width/2),
+					((int)(cart_x*Math.cos(theta) + cart_y*Math.sin(theta)) + height/2));
+	    
+	    
+	    
 	   
+	    /*
 	    for (int i = 0; i < 2; i++) {
 		graphicsForDrawing.drawLine(pX, pY, x, y);
 		new_pX = ((int)(cart_pX*Math.cos(theta) - cart_pY*Math.sin(theta)) + width/2);
@@ -164,7 +190,7 @@ public class MandalaMaker extends JApplet {
 		x = new_x;
 		y = new_y;
 	    }
-       
+	    */
 	    
 	    
 	    /*
