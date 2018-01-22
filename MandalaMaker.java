@@ -42,11 +42,11 @@ public class MandalaMaker extends JApplet {
 
 	    //THIS IS X-AXIS
 	    g.drawLine(0, height/2, width, height/2);
-
+	    /*
 	    //DIAGONAL AXES
 	    g.drawLine(0, 0, width, height);
 	    g.drawLine(0, height, width, 0);
-
+	    */
 	}
 
 	private void setUpDrawingGraphics() {
@@ -136,30 +136,44 @@ public class MandalaMaker extends JApplet {
 	    int cart_x = x - width/2;
 	    int cart_y = height/2 - y;
 
+	    //storing pX, pY, x, y into other variables whose values can be changed
+	    int new_pX = pX;
+	    int new_pY = pY;
+	    int new_x = x;
+	    int new_y = y;
+
 	    //for one axis
-	   
-	    graphicsForDrawing.drawLine(pX, pY, x, y);
+
+	    /* graphicsForDrawing.drawLine(pX, pY, x, y);
 	    graphicsForDrawing.drawLine(((int)(cart_pX*Math.cos(theta) - cart_pY*Math.sin(theta)) + width/2),
 					((int)(cart_pX*Math.sin(theta) + cart_pY*Math.cos(theta)) +  height/2),
 					((int)(cart_x*Math.cos(theta) - cart_y*Math.sin(theta)) + width/2),
 					((int)(cart_x*Math.sin(theta) + cart_y*Math.cos(theta)) + height/2));
-	   
 	    
-	    
-	    /*for two axis
-	      double theta = Math.toRadians(90);
-	   
-	      graphicsForDrawing.drawLine(pX, pY, x, y);
-	      graphicsForDrawing.drawLine(((int)((pX-width/2) * Math.sin(theta) + (pY-height/2) * Math.cos(theta)) + width/2),
-	      ((int)((pX-width/2) * Math.cos(theta) - (pY-height/2) * Math.sin(theta)) +  height/2),
-	      ((int)((x-width/2) * Math.sin(theta) + (y-height/2) * Math.cos(theta)) + width/2),
-	      ((int)((x-width/2) * Math.cos(theta) - (y-height/2) * Math.sin(theta)) + height/2));
-	      graphicsForDrawing.drawLine(((int)((pX-width/2) * Math.cos(theta) - (pY-height/2) * Math.sin(theta)) + width/2),
-	      ((int)((pX-width/2) * Math.sin(theta) + (pY-height/2) * Math.cos(theta)) +  height/2),
-	      ((int)((x-width/2) * Math.cos(theta) - (y-height/2) * Math.sin(theta)) + width/2),
-	      ((int)((x-width/2) * Math.sin(theta) + (y-height/2) * Math.cos(theta)) + height/2));
 	    */
-
+	    //for two axis
+	   
+	    for (int i = 0; i < 2; i++) {
+		graphicsForDrawing.drawLine(pX, pY, x, y);
+		new_pX = ((int)(cart_pX*Math.cos(theta) - cart_pY*Math.sin(theta)) + width/2);
+		new_pY = ((int)(cart_pX*Math.sin(theta) + cart_pY*Math.cos(theta)) +  height/2);
+		new_x = ((int)(cart_x*Math.cos(theta) - cart_y*Math.sin(theta)) + width/2);
+		new_y = ((int)(cart_x*Math.sin(theta) + cart_y*Math.cos(theta)) + height/2);
+		pX = new_pX;
+		pY = new_pY;
+		x = new_x;
+		y = new_y;
+	    }
+       
+	    
+	    
+	    /*
+	    graphicsForDrawing.drawLine(((int)(cart_pX*Math.sin(theta) - cart_pY*Math.cos(theta)) + width/2),
+					((int)(cart_pX*Math.cos(theta) + cart_pY*Math.sin(theta)) +  height/2),
+					((int)(cart_x*Math.sin(theta) - cart_y*Math.cos(theta)) + width/2),
+					((int)(cart_x*Math.cos(theta) + cart_y*Math.sin(theta)) + height/2));
+	    */
+	 
 	    pX = x;
 	    pY = y;
 
