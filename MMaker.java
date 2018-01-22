@@ -3,7 +3,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 @SuppressWarnings("serial")
-public class MMaker extends JFrame implements ActionListener {
+public class MMaker extends JFrame implements ActionListener, ChangeListener {
 
     public static final int width = 750;
     public static final int height = 750;
@@ -11,6 +11,8 @@ public class MMaker extends JFrame implements ActionListener {
     private String sN = "1";
     private int sn = Integer.parseInt(sN);
     private int angle = 360 / (2 * sn);
+
+    private Color color = Color.BLACK;
     
     private DrawCanvas canvas;
 
@@ -24,6 +26,10 @@ public class MMaker extends JFrame implements ActionListener {
 	    sendHelp(s);
 	    System.out.println("sN: " + sN + "\tsn: " + sn + "\tangle: " + angle);
 	}
+    }
+
+    public void stateChanged(ChangeEvent e) {
+	color = colors.getColor();
     }
 
     private void sendHelp (String s) {
@@ -40,35 +46,17 @@ public class MMaker extends JFrame implements ActionListener {
 	JLabel lColor = new JLabel("Color: ");
 	JButton bClear = new JButton("Clear");
 
+	JColorChooser colors = new JColorChooser();
+	
 	txtAxes.addActionListener(this);
 	bClear.addActionListener(this);
-	
-	/*
-	DefaultListModel colors = new DefaultListModel();
-	colors.addElement("black");
-	colors.addElement("white"); 
-	colors.addElement("red");
-	colors.addElement("yellow");
-	colors.addElement("green");
-	colors.addElement("blue");
-	
-	JList color = new JList(colors);
-	color.getSelectionModel();
-	color.addListSelectionListener(new SharedListSelectionHandler());
-	color.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-	color.setLayoutOrientation(JList.VERTICAL);
-	color.setVisibleRowCount(-1);
-	
-	JScrollPane colorpane = new JScrollPane(color);
-	colorpane.setPreferredSize(new Dimension(75, 100));
-	*/
+	colors.addChangeListener(this);
 	
 	btnPanel.setPreferredSize(new Dimension(150,750));
 	btnPanel.add(lAxes);
 	btnPanel.add(txtAxes);
-	//btnPanel.add(lColor);
-	//btnPanel.add(colorpane);
 	btnPanel.add(bClear);
+	btnPanel.add(colors);
 	
 	canvas = new DrawCanvas();
 	canvas.setPreferredSize(new Dimension(width, height));
@@ -99,7 +87,7 @@ public class MMaker extends JFrame implements ActionListener {
 	
 	private void setUp() {
 	    g = getGraphics();
-	    g.setColor(Color.BLACK);
+	    g.setColor(color);
 	}
 	
 	@Override
