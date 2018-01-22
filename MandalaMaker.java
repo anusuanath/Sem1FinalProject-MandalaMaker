@@ -9,7 +9,7 @@ public class MandalaMaker extends JApplet {
 	JFrame window = new JFrame("Mandala Maker");
 	panel content = new panel();
 	window.setContentPane(content);
-	window.setSize(556,500);
+	window.setSize(800,800);
 	window.setLocation(0,0);
 	window.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 	window.setVisible(true);
@@ -20,14 +20,6 @@ public class MandalaMaker extends JApplet {
     }
 
     public static class panel extends JPanel implements MouseListener, MouseMotionListener {
-	private final static int BLACK = 0,
-	    RED = 1,     
-	    GREEN = 2,   
-	    BLUE = 3, 
-	    CYAN = 4,   
-	    MAGENTA = 5,
-	    YELLOW = 6;
-	private int currentColor = BLACK;      
 	private int pX, pY;      
 	private boolean dragging;
 	private Graphics graphicsForDrawing;
@@ -42,41 +34,9 @@ public class MandalaMaker extends JApplet {
 	    super.paintComponent(g);
 	    int width = getWidth();
 	    int height = getHeight();
-	    int colorSpacing = (height - 56) / 7;
-         
-	    g.setColor(Color.GRAY);
-	    g.drawRect(0, 0, width-1, height-1);
-	    g.drawRect(1, 1, width-3, height-3);
-	    g.drawRect(2, 2, width-5, height-5);
-	    
-	    g.fillRect(width - 56, 0, 56, height);
-         
-	    g.setColor(Color.WHITE);
-	    g.fillRect(width-53,  height-53, 50, 50);
-	    g.setColor(Color.BLACK);
-	    g.drawRect(width-53, height-53, 49, 49);
-	    g.drawString("CLEAR", width-48, height-23);
-	    
-	    g.setColor(Color.BLACK);
-	    g.fillRect(width-53, 3 + 0*colorSpacing, 50, colorSpacing-3);
-	    g.setColor(Color.RED);
-	    g.fillRect(width-53, 3 + 1*colorSpacing, 50, colorSpacing-3);
-	    g.setColor(Color.GREEN);
-	    g.fillRect(width-53, 3 + 2*colorSpacing, 50, colorSpacing-3);
-	    g.setColor(Color.BLUE);
-	    g.fillRect(width-53, 3 + 3*colorSpacing, 50, colorSpacing-3);
-	    g.setColor(Color.CYAN);
-	    g.fillRect(width-53, 3 + 4*colorSpacing, 50, colorSpacing-3);
-	    g.setColor(Color.MAGENTA);
-	    g.fillRect(width-53, 3 + 5*colorSpacing, 50, colorSpacing-3);
-	    g.setColor(Color.YELLOW);
-	    g.fillRect(width-53, 3 + 6*colorSpacing, 50, colorSpacing-3);
-         
-	    g.setColor(Color.WHITE);
-	    g.drawRect(width-55, 1 + currentColor*colorSpacing, 53, colorSpacing);
-	    g.drawRect(width-54, 2 + currentColor*colorSpacing, 51, colorSpacing-2);
 
 	    g.setColor(Color.BLACK);
+<<<<<<< HEAD
 
 	    //THIS IS Y-AXIS
 	    g.drawLine((width - 56)/2, 0, (width - 56)/2, height);
@@ -95,47 +55,17 @@ public class MandalaMaker extends JApplet {
 	    int height = getHeight();
 	    int colorSpacing = (height - 56) / 7;
 	    int newColor = y / colorSpacing;
+=======
+>>>>>>> racheltriestodostuff
 	    
-	    if (newColor < 0 || newColor > 6) {
-		return;
-	    }
-	    
-	    Graphics g = getGraphics();
-	    g.setColor(Color.GRAY);
-	    g.drawRect(width-55, 1 + currentColor*colorSpacing, 53, colorSpacing);
-	    g.drawRect(width-54, 2 + currentColor*colorSpacing, 51, colorSpacing-2);
-	    currentColor = newColor;
-	    g.setColor(Color.WHITE);
-	    g.drawRect(width-55, 1 + currentColor*colorSpacing, 53, colorSpacing);
-	    g.drawRect(width-54, 2 + currentColor*colorSpacing, 51, colorSpacing-2);
-	    g.dispose();      
+	    g.drawLine(width/2, 0, width/2, height); //THIS IS Y-AXIS
+	    g.drawLine(0, height/2, width, height/2); //THIS IS X-AXIS
+
 	}
 	
 	private void setUpDrawingGraphics() {
 	    graphicsForDrawing = getGraphics();
-	    switch (currentColor) {
-	    case BLACK:
-		graphicsForDrawing.setColor(Color.BLACK);
-		break;
-	    case RED:
-		graphicsForDrawing.setColor(Color.RED);
-		break;
-	    case GREEN:
-		graphicsForDrawing.setColor(Color.GREEN);
-		break;
-	    case BLUE:
-		graphicsForDrawing.setColor(Color.BLUE);
-		break;
-	    case CYAN:
-		graphicsForDrawing.setColor(Color.CYAN);
-		break;
-	    case MAGENTA:
-		graphicsForDrawing.setColor(Color.MAGENTA);
-		break;
-	    case YELLOW:
-		graphicsForDrawing.setColor(Color.YELLOW);
-		break;
-	    }
+	    graphicsForDrawing.setColor(Color.BLACK);
 	}
 	
 	public void mousePressed(MouseEvent e) {    
@@ -149,22 +79,19 @@ public class MandalaMaker extends JApplet {
 		return;
 	    }	 
 
-	    if (x > width - 57) {
-		if (y > height - 57) {
+	    if (x > width) {
+		if (y > height) {
 		    repaint();
-		}
-		else {
-		    changeColor(y);
 		}
 	    }
 
-	    else if (x > 7 && x < width - 60 && y > 7 && y < height - 7) {
+	    else if (x > 0 && x < width && y > 0 && y < height) {
 		pX = x;
 		pY = y;
 		dragging = true;
 		setUpDrawingGraphics();
 	    }     
-	}      
+	}
 
 	public void mouseReleased(MouseEvent evt) {
 	   if (dragging == false) {
@@ -176,9 +103,10 @@ public class MandalaMaker extends JApplet {
 	}
       
 	public void mouseDragged(MouseEvent e) {
-	    int width = getWidth() - 56;
+	    int width = getWidth();
 	    int height = getHeight();
-
+	    int angle = 360/2;
+	    double theta = Math.toRadians(angle);
 	    if (dragging == false) {
 		return;
 	    }
@@ -186,6 +114,7 @@ public class MandalaMaker extends JApplet {
 	    int x = e.getX();
 	    int y = e.getY();
          
+<<<<<<< HEAD
 	    if (x < 3) {
 		x = 3;
 	    }
@@ -205,6 +134,9 @@ public class MandalaMaker extends JApplet {
 
 	   /*reflects across y-axis
 	  
+=======
+	   /*
+>>>>>>> racheltriestodostuff
 	   graphicsForDrawing.drawLine(pX, pY, x, y);
 	   graphicsForDrawing.drawLine(width - pX, pY, width - x, y);
 	  
@@ -216,10 +148,17 @@ public class MandalaMaker extends JApplet {
        	   */
 	   //x-, y-, and diagonal axes refelctions
 
+<<<<<<< HEAD
+=======
+	   // 2 AXES
+
+	   /*
+>>>>>>> racheltriestodostuff
 	   graphicsForDrawing.drawLine(pX, pY, x, y);
 	   graphicsForDrawing.drawLine(pX, height - pY, x, height - y);
 	   graphicsForDrawing.drawLine(width - pX, pY, width - x, y);
 	   graphicsForDrawing.drawLine(width - pX, height - pY, width - x, height - y);
+<<<<<<< HEAD
 	   graphicsForDrawing.drawLine(pY, pX, y, x);
 	   graphicsForDrawing.drawLine(height - pY, pX, height - y, x);
 	   graphicsForDrawing.drawLine(pY, width - pX, y, width - x);
@@ -251,8 +190,19 @@ public class MandalaMaker extends JApplet {
 					 ((int)((x-width/2) * Math.cos(theta) - (y-height/2) * Math.sin(theta)) + width/2),
 					 ((int)((x-width/2) * Math.sin(theta) + (y-height/2) * Math.cos(theta)) + height/2));
 	   */
+=======
+	   */
+	   
+	   graphicsForDrawing.drawLine(pX, pY, x, y);
+	   
+	   graphicsForDrawing.drawLine(((int)(pX * Math.cos(theta) - pY * Math.sin(theta)) + (width)),
+				       ((int)(pX * Math.sin(theta) + pY * Math.cos(theta)) + (height)),
+				       ((int)(x * Math.cos(theta) - y * Math.sin(theta)) + (width)),
+				       ((int)(x * Math.sin(theta) + y * Math.cos(theta))) + (height));
+>>>>>>> racheltriestodostuff
 	   pX = x;
 	   pY = y;
+
 	}
        
 	public void mouseEntered(MouseEvent evt) { }
