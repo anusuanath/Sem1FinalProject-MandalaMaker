@@ -12,8 +12,6 @@ public class MMaker extends JFrame implements ActionListener {
     private int sn = Integer.parseInt(sN);
     private int angle = 360 / (2 * sn);
     
-    private boolean toggled = false;
-
     private DrawCanvas canvas;
 
     public void actionPerformed(ActionEvent e) {
@@ -40,41 +38,6 @@ public class MMaker extends JFrame implements ActionListener {
 	JTextField txtAxes = new JTextField(sN,5);
 	JLabel lColor = new JLabel("Color: ");
 	JButton bClear = new JButton("Clear");
-
-	button = new JButton("Choose color");
-	button.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {
-		toggleColorChooser(); // show and hide the color chooser
-	    }
-	});
-	button.setBounds(10, 11, 150, 23);
-	contentPane.add(button);
-
-	colorChooser = new JColorChooser(Color.BLACK); // default color is black
-	colorChooser.setBorder(null);
-	colorChooser.getSelectionModel().addChangeListener(new ChangeListener() {
-	    public void stateChanged(ChangeEvent e) {
-		colorChanged(); // change background color of "button"
-	    }
-	    });
-
-	protected void toggleColorChooser() {
-	    if (toggled) {
-		contentPane.remove(colorChooser);
-	    }
-	    else {
-		colorChooser.setBounds(button.getX(), button.getY() + 20, 600, 300);
-		colorChooser.setVisible(true);
-		contentPane.add(colorChooser);
-	    }
-	    toggled = !toggled;
-	    contentPane.validate();
-	    contentPane.repaint();
-	}
-
-	protected void colorChanged() {
-	    button.setBackground(colorChooser.getSelectionModel().getSelectedColor());
-	}
 	
 	txtAxes.addActionListener(this);
 	bClear.addActionListener(this);
@@ -83,7 +46,6 @@ public class MMaker extends JFrame implements ActionListener {
 	btnPanel.add(lAxes);
 	btnPanel.add(txtAxes);
 	btnPanel.add(bClear);
-	btnPanel.add(colors);
 	
 	canvas = new DrawCanvas();
 	canvas.setPreferredSize(new Dimension(width, height));
@@ -114,7 +76,7 @@ public class MMaker extends JFrame implements ActionListener {
 	
 	private void setUp() {
 	    g = getGraphics();
-	    g.setColor(color);
+	    g.setColor(Color.BLACK);
 	}
 	
 	@Override
@@ -186,6 +148,8 @@ public class MMaker extends JFrame implements ActionListener {
 	    
 	    int x2 = x - width/2;
 	    int y2 = y - height/2;
+
+	    System.out.println("#: " + 1 + ", " + 0 + "\n\tx1: " + x1 + "\n\twidth/2: " + (x1 + width/2) + "\n\ty1: " + y1 + "\n\theight/2: " + (y1 + height/2) +  "\n\tx2: " + x2 + "\n\twidth/2: " + (x2 + width/2) + "\n\ty2: " + y2 + "\n\theight/2: " + (y2 + height/2));
 	    
 	    for (int i = 1; i < (2 * sn); i++) {
 		int x3 = ((int)(x1 * i * Math.cos(theta) - y1 * i * Math.sin(theta)));
@@ -199,6 +163,8 @@ public class MMaker extends JFrame implements ActionListener {
 		y2 = y4;
 		
 		g.drawLine(x3 + width/2, y3 + width/2, x4 + width/2, y4 + width/2);
+
+		System.out.println("#: " + (i + 1) + ", " + (i * angle) + "\n\tx3: " + x3 + "\n\twidth/2: " + (x3 + width/2) + "\n\ty3: " + y3 + "\n\theight/2: " + (y3 + height/2) +  "\n\tx4: " + x4 + "\n\twidth/2: " + (x4 + width/2) + "\n\ty4: " + y4 + "\n\theight/2: " + (y4 + height/2));
 	    }
 	    
 	    pX = x;
