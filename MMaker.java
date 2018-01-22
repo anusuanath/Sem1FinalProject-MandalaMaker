@@ -3,7 +3,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 @SuppressWarnings("serial")
-public class MMaker extends JFrame implements ActionListener, ChangeListener {
+public class MMaker extends JFrame implements ActionListener {
 
     public static final int width = 750;
     public static final int height = 750;
@@ -11,9 +11,9 @@ public class MMaker extends JFrame implements ActionListener, ChangeListener {
     private String sN = "1";
     private int sn = Integer.parseInt(sN);
     private int angle = 360 / (2 * sn);
-
-    private Color color = Color.BLACK;
     
+    private boolean toggled = false;
+
     private DrawCanvas canvas;
 
     public void actionPerformed(ActionEvent e) {
@@ -28,10 +28,6 @@ public class MMaker extends JFrame implements ActionListener, ChangeListener {
 	}
     }
 
-    public void stateChanged(ChangeEvent e) {
-	color = colors.getColor();
-    }
-
     private void sendHelp (String s) {
 	sN = s;
 	sn = Integer.parseInt(sN);
@@ -39,18 +35,49 @@ public class MMaker extends JFrame implements ActionListener, ChangeListener {
     }
     
     public MMaker() {
-	
 	JPanel btnPanel = new JPanel(new FlowLayout());
 	JLabel lAxes = new JLabel("# Axes");
 	JTextField txtAxes = new JTextField(sN,5);
 	JLabel lColor = new JLabel("Color: ");
 	JButton bClear = new JButton("Clear");
 
-	JColorChooser colors = new JColorChooser();
+	button = new JButton("Choose color");
+	button.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+		toggleColorChooser(); // show and hide the color chooser
+	    }
+	});
+	button.setBounds(10, 11, 150, 23);
+	contentPane.add(button);
+
+	colorChooser = new JColorChooser(Color.BLACK); // default color is black
+	colorChooser.setBorder(null);
+	colorChooser.getSelectionModel().addChangeListener(new ChangeListener() {
+	    public void stateChanged(ChangeEvent e) {
+		colorChanged(); // change background color of "button"
+	    }
+	    });
+
+	protected void toggleColorChooser() {
+	    if (toggled) {
+		contentPane.remove(colorChooser);
+	    }
+	    else {
+		colorChooser.setBounds(button.getX(), button.getY() + 20, 600, 300);
+		colorChooser.setVisible(true);
+		contentPane.add(colorChooser);
+	    }
+	    toggled = !toggled;
+	    contentPane.validate();
+	    contentPane.repaint();
+	}
+
+	protected void colorChanged() {
+	    button.setBackground(colorChooser.getSelectionModel().getSelectedColor());
+	}
 	
 	txtAxes.addActionListener(this);
 	bClear.addActionListener(this);
-	colors.addChangeListener(this);
 	
 	btnPanel.setPreferredSize(new Dimension(150,750));
 	btnPanel.add(lAxes);
