@@ -36,20 +36,19 @@ public class MandalaMaker extends JApplet {
 	    int height = getHeight();
 
 	    g.setColor(Color.BLACK);
-<<<<<<< HEAD
 
 	    //THIS IS Y-AXIS
-	    g.drawLine((width - 56)/2, 0, (width - 56)/2, height);
+	    g.drawLine(width/2, 0, width/2, height);
 
 	    //THIS IS X-AXIS
-	    g.drawLine(0, height/2, width-56, height/2);
+	    g.drawLine(0, height/2, width, height/2);
 
 	    //DIAGONAL AXES
-	    g.drawLine(0, 0, width-56, height);
-	    g.drawLine(0, height, width-56, 0);
+	    g.drawLine(0, 0, width, height);
+	    g.drawLine(0, height, width, 0);
 
 	}
-
+	/*
 	private void changeColor(int y) {   
 	    int width = getWidth();
 	    int height = getHeight();
@@ -58,11 +57,8 @@ public class MandalaMaker extends JApplet {
 =======
 >>>>>>> racheltriestodostuff
 	    
-	    g.drawLine(width/2, 0, width/2, height); //THIS IS Y-AXIS
-	    g.drawLine(0, height/2, width, height/2); //THIS IS X-AXIS
-
-	}
-	
+	  
+	*/
 	private void setUpDrawingGraphics() {
 	    graphicsForDrawing = getGraphics();
 	    graphicsForDrawing.setColor(Color.BLACK);
@@ -85,7 +81,10 @@ public class MandalaMaker extends JApplet {
 		}
 	    }
 
-	    else if (x > 0 && x < width && y > 0 && y < height) {
+	    else if (x > 0 &&
+		     x < width &&
+		     y > 0 &&
+		     y < height) {
 		pX = x;
 		pY = y;
 		dragging = true;
@@ -113,95 +112,79 @@ public class MandalaMaker extends JApplet {
 
 	    int x = e.getX();
 	    int y = e.getY();
-         
+	    /*
 <<<<<<< HEAD
 	    if (x < 3) {
-		x = 3;
+	    x = 3;
 	    }
 	
-	   if (x > getWidth() - 57) {
-	       x = getWidth() - 57;
-	   }
+	    if (x > getWidth() - 57) {
+	    x = getWidth() - 57;
+	    }
 	
-	   if (y < 4) {
-	       y = 4;
-	   }
+	    if (y < 4) {
+	    y = 4;
+	    }
 
-	   if (y > getHeight() - 5) {
-	       y = getHeight() - 5;
-	   }
+	    if (y > getHeight() - 5) {
+	    y = getHeight() - 5;
+	    }
+	    */
 
-
-	   /*reflects across y-axis
+	    /*reflects across y-axis
 	  
-=======
-	   /*
->>>>>>> racheltriestodostuff
-	   graphicsForDrawing.drawLine(pX, pY, x, y);
-	   graphicsForDrawing.drawLine(width - pX, pY, width - x, y);
+	      graphicsForDrawing.drawLine(pX, pY, x, y);
+	      graphicsForDrawing.drawLine(width - pX, pY, width - x, y);
 	  
 
-	   //reflects across x-axis
+	      //reflects across x-axis
 
-	   graphicsForDrawing.drawLine(width - pX, pY, width - x, y);
-	   graphicsForDrawing.drawLine(width - pX, height - pY, width - x, height - y);
-       	   */
-	   //x-, y-, and diagonal axes refelctions
+	      graphicsForDrawing.drawLine(width - pX, pY, width - x, y);
+	      graphicsForDrawing.drawLine(width - pX, height - pY, width - x, height - y);
+	    */
+	  
+	    // 2 AXES
 
-<<<<<<< HEAD
-=======
-	   // 2 AXES
+	    graphicsForDrawing.drawLine(pX, pY, x, y);
+	    graphicsForDrawing.drawLine(pX, height - pY, x, height - y);
+	    graphicsForDrawing.drawLine(width - pX, pY, width - x, y);
+	    graphicsForDrawing.drawLine(width - pX, height - pY, width - x, height - y);
 
-	   /*
->>>>>>> racheltriestodostuff
-	   graphicsForDrawing.drawLine(pX, pY, x, y);
-	   graphicsForDrawing.drawLine(pX, height - pY, x, height - y);
-	   graphicsForDrawing.drawLine(width - pX, pY, width - x, y);
-	   graphicsForDrawing.drawLine(width - pX, height - pY, width - x, height - y);
-<<<<<<< HEAD
-	   graphicsForDrawing.drawLine(pY, pX, y, x);
-	   graphicsForDrawing.drawLine(height - pY, pX, height - y, x);
-	   graphicsForDrawing.drawLine(pY, width - pX, y, width - x);
-	   graphicsForDrawing.drawLine(height - pY, width - pX, height - y, width - x);
+	    graphicsForDrawing.drawLine(pY, pX, y, x);
+	    graphicsForDrawing.drawLine(height - pY, pX, height - y, x);
+	    graphicsForDrawing.drawLine(pY, width - pX, y, width - x);
+	    graphicsForDrawing.drawLine(height - pY, width - pX, height - y, width - x);
 	   
 
-	   /*//attempting to use formula
+	    /*attempting to use formula
 
-	   //for one axis
-	   double theta = Math.toRadians(180);
+	    //for one axis
+	    double theta = Math.toRadians(180);
 	   
-	   graphicsForDrawing.drawLine(pX, pY, x, y);
-	   graphicsForDrawing.drawLine(((int)((pX-width/2) * Math.cos(theta) - (pY-height/2) * Math.sin(theta)) + width/2),
-				       (-1*(int)((pX-width/2) * Math.sin(theta) + (pY-height/2) * Math.cos(theta)) +  height/2),
-				       ((int)((x-width/2) * Math.cos(theta) - (y-height/2) * Math.sin(theta)) + width/2),
-				       (-1*(int)((x-width/2) * Math.sin(theta) + (y-height/2) * Math.cos(theta)) + height/2));
+	    graphicsForDrawing.drawLine(pX, pY, x, y);
+	    graphicsForDrawing.drawLine(((int)((pX-width/2) * Math.cos(theta) - (pY-height/2) * Math.sin(theta)) + width/2),
+	    (-1*(int)((pX-width/2) * Math.sin(theta) + (pY-height/2) * Math.cos(theta)) +  height/2),
+	    ((int)((x-width/2) * Math.cos(theta) - (y-height/2) * Math.sin(theta)) + width/2),
+	    (-1*(int)((x-width/2) * Math.sin(theta) + (y-height/2) * Math.cos(theta)) + height/2));
 	   
-	   */
-	   /*for two axis
-	     double theta = Math.toRadians(90);
+	    */
+	    
+	    /*for two axis
+	      double theta = Math.toRadians(90);
 	   
-	     graphicsForDrawing.drawLine(pX, pY, x, y);
-	     graphicsForDrawing.drawLine(((int)((pX-width/2) * Math.sin(theta) + (pY-height/2) * Math.cos(theta)) + width/2),
-					 ((int)((pX-width/2) * Math.cos(theta) - (pY-height/2) * Math.sin(theta)) +  height/2),
-					 ((int)((x-width/2) * Math.sin(theta) + (y-height/2) * Math.cos(theta)) + width/2),
-					 ((int)((x-width/2) * Math.cos(theta) - (y-height/2) * Math.sin(theta)) + height/2));
-	     graphicsForDrawing.drawLine(((int)((pX-width/2) * Math.cos(theta) - (pY-height/2) * Math.sin(theta)) + width/2),
-					 ((int)((pX-width/2) * Math.sin(theta) + (pY-height/2) * Math.cos(theta)) +  height/2),
-					 ((int)((x-width/2) * Math.cos(theta) - (y-height/2) * Math.sin(theta)) + width/2),
-					 ((int)((x-width/2) * Math.sin(theta) + (y-height/2) * Math.cos(theta)) + height/2));
-	   */
-=======
-	   */
-	   
-	   graphicsForDrawing.drawLine(pX, pY, x, y);
-	   
-	   graphicsForDrawing.drawLine(((int)(pX * Math.cos(theta) - pY * Math.sin(theta)) + (width)),
-				       ((int)(pX * Math.sin(theta) + pY * Math.cos(theta)) + (height)),
-				       ((int)(x * Math.cos(theta) - y * Math.sin(theta)) + (width)),
-				       ((int)(x * Math.sin(theta) + y * Math.cos(theta))) + (height));
->>>>>>> racheltriestodostuff
-	   pX = x;
-	   pY = y;
+	      graphicsForDrawing.drawLine(pX, pY, x, y);
+	      graphicsForDrawing.drawLine(((int)((pX-width/2) * Math.sin(theta) + (pY-height/2) * Math.cos(theta)) + width/2),
+	      ((int)((pX-width/2) * Math.cos(theta) - (pY-height/2) * Math.sin(theta)) +  height/2),
+	      ((int)((x-width/2) * Math.sin(theta) + (y-height/2) * Math.cos(theta)) + width/2),
+	      ((int)((x-width/2) * Math.cos(theta) - (y-height/2) * Math.sin(theta)) + height/2));
+	      graphicsForDrawing.drawLine(((int)((pX-width/2) * Math.cos(theta) - (pY-height/2) * Math.sin(theta)) + width/2),
+	      ((int)((pX-width/2) * Math.sin(theta) + (pY-height/2) * Math.cos(theta)) +  height/2),
+	      ((int)((x-width/2) * Math.cos(theta) - (y-height/2) * Math.sin(theta)) + width/2),
+	      ((int)((x-width/2) * Math.sin(theta) + (y-height/2) * Math.cos(theta)) + height/2));
+	    */
+
+	    pX = x;
+	    pY = y;
 
 	}
        
