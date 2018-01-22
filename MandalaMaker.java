@@ -39,14 +39,19 @@ public class MandalaMaker extends JApplet {
 
 	    //THIS IS Y-AXIS
 	    g.drawLine(width/2, 0, width/2, height);
-
+	    
 	    //THIS IS X-AXIS
 	    g.drawLine(0, height/2, width, height/2);
-	    /*
+	    
 	    //DIAGONAL AXES
 	    g.drawLine(0, 0, width, height);
 	    g.drawLine(0, height, width, 0);
-	    */
+
+	    /*MORE AXES --> to make 8 total
+	    g.drawLine(0, height/4, width, height/4*3);
+	    g.drawLine(0, height/4*3, width, height/4);
+	    g.drawLine(width/4, 0, width/4*3, height);
+	    g.drawLine(width/4*3, 0, width/4, height);*/
 	}
 
 	private void setUpDrawingGraphics() {
@@ -102,20 +107,8 @@ public class MandalaMaker extends JApplet {
 
 	    int x = e.getX();
 	    int y = e.getY();
-	    
-	    /*reflects across y-axis
-	  
-	      graphicsForDrawing.drawLine(pX, pY, x, y);
-	      graphicsForDrawing.drawLine(width - pX, pY, width - x, y);
-	  
-	      //reflects across x-axis
 
-	      graphicsForDrawing.drawLine(width - pX, pY, width - x, y);
-	      graphicsForDrawing.drawLine(width - pX, height - pY, width - x, height - y);
-
-	    */
-
-	    /*4 AXES
+	    //4 AXES
 
 	    graphicsForDrawing.drawLine(pX, pY, x, y);
 	    graphicsForDrawing.drawLine(pX, height - pY, x, height - y);
@@ -126,8 +119,8 @@ public class MandalaMaker extends JApplet {
 	    graphicsForDrawing.drawLine(height - pY, pX, height - y, x);
 	    graphicsForDrawing.drawLine(pY, width - pX, y, width - x);
 	    graphicsForDrawing.drawLine(height - pY, width - pX, height - y, width - x);
-	   
-	    */
+
+	    /*
 
 	    //attempting to use formula
 
@@ -175,10 +168,10 @@ public class MandalaMaker extends JApplet {
 					((int)(cart_x*Math.sin(theta) - cart_y*Math.cos(theta)) + width/2),
 					((int)(cart_x*Math.cos(theta) + cart_y*Math.sin(theta)) + height/2));
 	    
-	    
+	    */
 	    
 	   
-	    /*
+	    /*attempting a for loop and failing miserably
 	    for (int i = 0; i < 2; i++) {
 		graphicsForDrawing.drawLine(pX, pY, x, y);
 		new_pX = ((int)(cart_pX*Math.cos(theta) - cart_pY*Math.sin(theta)) + width/2);
@@ -190,14 +183,6 @@ public class MandalaMaker extends JApplet {
 		x = new_x;
 		y = new_y;
 	    }
-	    */
-	    
-	    
-	    /*
-	    graphicsForDrawing.drawLine(((int)(cart_pX*Math.sin(theta) - cart_pY*Math.cos(theta)) + width/2),
-					((int)(cart_pX*Math.cos(theta) + cart_pY*Math.sin(theta)) +  height/2),
-					((int)(cart_x*Math.sin(theta) - cart_y*Math.cos(theta)) + width/2),
-					((int)(cart_x*Math.cos(theta) + cart_y*Math.sin(theta)) + height/2));
 	    */
 	 
 	    pX = x;
