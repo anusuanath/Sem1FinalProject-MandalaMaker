@@ -3,7 +3,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 @SuppressWarnings("serial")
-public class MMaker extends JFrame implements ActionListener {
+public class MMaker extends JFrame implements ActionListener, ChangeListener {
 
     public static final int width = 750;
     public static final int height = 750;
@@ -13,7 +13,7 @@ public class MMaker extends JFrame implements ActionListener {
     // private int angle = 360 / (2 * sn);
     
     private DrawCanvas canvas;
-
+    
     public void actionPerformed(ActionEvent e) {
 	String s = e.getActionCommand();
 	System.out.println(s);
@@ -38,14 +38,23 @@ public class MMaker extends JFrame implements ActionListener {
 	JTextField txtAxes = new JTextField(sN,5);
 	JLabel lColor = new JLabel("Color: ");
 	JButton bClear = new JButton("Clear");
+
+	JColorChooser jcc = new JColorChooser();
+	ColorSelectionModel model = jcc.getSelectionModel();
 	
 	txtAxes.addActionListener(this);
 	bClear.addActionListener(this);
+	model.addChangeListener(new ChangeListener() {
+		public void stateChanged(ChangeEvent e) {
+		    System.out.println("Color: " + jcc.getColor());
+		}
+	    });
 	
 	btnPanel.setPreferredSize(new Dimension(150,750));
 	btnPanel.add(lAxes);
 	btnPanel.add(txtAxes);
 	btnPanel.add(bClear);
+	btnPanel.add(jcc);
 	
 	canvas = new DrawCanvas();
 	canvas.setPreferredSize(new Dimension(width, height));
